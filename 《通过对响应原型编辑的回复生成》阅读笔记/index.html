@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="论文题目：Response Generation by Context-aware Prototype Editing 代码链接：https://github.com/MarkWuNLP/ResponseEdit AAAI 2019 北航 本文的主要目的是为了解决开放域对话生成中，生成句子较短且无意义的问题。模型首先从预定义的索引中检索到响应，然后根据问题原型和当前问题的差异编辑响应原型。主要思">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《通过对响应原型编辑的回复生成》阅读笔记">
+<meta property="og:url" content="http://www.sherlocknlp.com/《通过对响应原型编辑的回复生成》阅读笔记/index.html">
+<meta property="og:site_name" content="Sherlockの小酒馆">
+<meta property="og:description" content="论文题目：Response Generation by Context-aware Prototype Editing 代码链接：https://github.com/MarkWuNLP/ResponseEdit AAAI 2019 北航 本文的主要目的是为了解决开放域对话生成中，生成句子较短且无意义的问题。模型首先从预定义的索引中检索到响应，然后根据问题原型和当前问题的差异编辑响应原型。主要思">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ps1hmyafs.bkt.clouddn.com/image/20190531/JBLOFiIj98jN.png">
+<meta property="og:image" content="http://ps1hmyafs.bkt.clouddn.com/FvX6HP7sPZxLKZp34lUpIRRdFkuq">
+<meta property="og:image" content="http://ps1hmyafs.bkt.clouddn.com/FjSHtNN5ZpLNsSmzX2LfHhPyJfUO">
+<meta property="og:image" content="http://ps1hmyafs.bkt.clouddn.com/image/20190531/Bj1N1dPqytaM.png">
+<meta property="og:image" content="http://ps1hmyafs.bkt.clouddn.com/image/20190531/i8r6XpJRkoB8.png">
+<meta property="og:image" content="http://ps1hmyafs.bkt.clouddn.com/image/20190531/TCjGFpwKUP4r.png">
+<meta property="og:image" content="http://ps1hmyafs.bkt.clouddn.com/image/20190531/b5a8kWcFkUVR.png">
+<meta property="og:image" content="http://ps1hmyafs.bkt.clouddn.com/image/20190531/fApi1vQh1WLv.png">
+<meta property="og:updated_time" content="2019-05-31T08:20:33.867Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《通过对响应原型编辑的回复生成》阅读笔记">
+<meta name="twitter:description" content="论文题目：Response Generation by Context-aware Prototype Editing 代码链接：https://github.com/MarkWuNLP/ResponseEdit AAAI 2019 北航 本文的主要目的是为了解决开放域对话生成中，生成句子较短且无意义的问题。模型首先从预定义的索引中检索到响应，然后根据问题原型和当前问题的差异编辑响应原型。主要思">
+<meta name="twitter:image" content="http://ps1hmyafs.bkt.clouddn.com/image/20190531/JBLOFiIj98jN.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://www.sherlocknlp.com/《通过对响应原型编辑的回复生成》阅读笔记/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>《通过对响应原型编辑的回复生成》阅读笔记 | Sherlockの小酒馆</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Sherlockの小酒馆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.sherlocknlp.com/《通过对响应原型编辑的回复生成》阅读笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sherlock">
+      <meta itemprop="description" content="Sherlock的技术小站">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sherlockの小酒馆">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《通过对响应原型编辑的回复生成》阅读笔记
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-31 16:20:01 / 修改时间：16:20:33" itemprop="dateCreated datePublished" datetime="2019-05-31T16:20:01+08:00">2019-05-31</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://ps1hmyafs.bkt.clouddn.com/image/20190531/JBLOFiIj98jN.png" alt="mark"></p>
+<p>论文题目：<a href="https://arxiv.org/abs/1806.07042" target="_blank" rel="noopener">Response Generation by Context-aware Prototype Editing</a></p>
+<p>代码链接：<a href="https://github.com/MarkWuNLP/ResponseEdit" target="_blank" rel="noopener">https://github.com/MarkWuNLP/ResponseEdit</a></p>
+<p>AAAI 2019 北航</p>
+<p>本文的<strong>主要目的</strong>是为了解决开放域对话生成中，生成句子较短且无意义的问题。模型首先从预定义的索引中检索到响应，然后根据问题原型和当前问题的差异编辑响应原型。主要思想是基于<strong>由于响应原型有很好的语法和信息，对响应原型进行轻微地调整就能得到较好的回复</strong>这一假设，来进行相关实验和论证。这是一种<strong>“检索+生成”</strong>的方法，既有检索式聊天机器人回复流畅和信息量大的优势，还有生成式聊天机器人的灵活性和相关性。</p>
+<p><img src="http://ps1hmyafs.bkt.clouddn.com/FvX6HP7sPZxLKZp34lUpIRRdFkuq" alt></p>
+<h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><p>该模型由原型选择器$\mathcal{S}$和上下文感知编辑器$\mathcal{E}$组成。给定一个新的会话，我们首先使用选择器S来检索语料$\mathcal{D} = {(C_i, R_i)}_{i=1}^{N}$中的$(C_{i}, R_{i}) \in \mathcal{D}$。然后编辑器$\mathcal{E}$计算出$z_i = f(C_i, C)$来编码$C_i$和$C$之间的差异信息。最后，通过概率$p(R|z_i, R_i)$生成回复。</p>
+<p><img src="http://ps1hmyafs.bkt.clouddn.com/FjSHtNN5ZpLNsSmzX2LfHhPyJfUO" alt></p>
+<h3 id="原型选择器-Prototype-Selector"><a href="#原型选择器-Prototype-Selector" class="headerlink" title="原型选择器(Prototype Selector)"></a>原型选择器(Prototype Selector)</h3><p><img src="http://ps1hmyafs.bkt.clouddn.com/image/20190531/Bj1N1dPqytaM.png" alt="mark"></p>
+<p>原型选择器使用<a href="https://lucenenet.apache.org/" target="_blank" rel="noopener">Lucene</a>框架用于检索，并应用其内置算法计算相似度。</p>
+<p><strong>测试阶段</strong></p>
+<p>根据上下文$C$与语料中$C^{‘}$的相似性选出（$C^{‘}$ , $R^{‘}$）</p>
+<p><strong>训练阶段</strong></p>
+<p>由于有真实的response，训练阶段的$C$，$R$对是通过response之间的相似性中选出来的。使用Jaccard相似度，取出范围在0.3-0.7的结果。这样既过滤掉相似度小于0.3的不相关回复，又除去相似度大于0.7的回复，避免直接copy。</p>
+<p>Jaccard相似系数</p>
+<script type="math/tex; mode=display">
+J(A, B) = \frac{|A \cap B|}{|A \cup B|}</script><p>在这个阶段最终得到多个四元组$(C, R, C^{‘}, R^{‘})$</p>
+<h3 id="上下文感知编辑器（Context-Aware-Neural-Editor）"><a href="#上下文感知编辑器（Context-Aware-Neural-Editor）" class="headerlink" title="上下文感知编辑器（Context-Aware Neural Editor）"></a>上下文感知编辑器（Context-Aware Neural Editor）</h3><h4 id="Edit-Vector-Generation"><a href="#Edit-Vector-Generation" class="headerlink" title="Edit Vector Generation"></a>Edit Vector Generation</h4><p><img src="http://ps1hmyafs.bkt.clouddn.com/image/20190531/i8r6XpJRkoB8.png" alt="mark"></p>
+<p>该部分的主要功能是根据$C$和$C^{‘}$的差异生成编辑向量（edit vector）</p>
+<p>用biGRU对$R^{‘}$进行编码</p>
+<script type="math/tex; mode=display">
+\overrightarrow{h_j} = f_{GRU}(h_{j-1}, r_{j}^{'}); \overleftarrow{h_j} = f_{GRU}(h_{j+1}, r_{j}^{'})</script><p>用attention机制计算context之间的diff-vector，其中$I=\{w | w \in C \land w \notin C^{‘}\}$表示插入词集合，$I=\{D | w^{‘} \in C^{‘} \land w^{‘} \notin C \}$表示删除词集合，$\oplus$表示concat操作。</p>
+<script type="math/tex; mode=display">
+diff_{c} = \sum_{w \in I} \beta_w \Psi(w) \oplus \sum_{w^{'} \in D} \gamma_{w^{'}} \Psi(w^{'})</script><script type="math/tex; mode=display">
+\beta_w = \frac{exp(e_w)}{\sum_{w \in I}exp(e_w)}</script><script type="math/tex; mode=display">
+e_w = v_{\beta}^{T}tanh(W_{\beta}[\Psi(w)\oplus h_l])</script><script type="math/tex; mode=display">
+\gamma_{w^{'}} = \frac{exp(e_{w^{'}})}{\sum_{w \in I}exp(e_{w^{'}})}</script><script type="math/tex; mode=display">
+z = tanh(W \cdot diff_{c} + b)</script><h4 id="Prototype-Editing"><a href="#Prototype-Editing" class="headerlink" title="Prototype Editing"></a>Prototype Editing</h4><p><img src="http://ps1hmyafs.bkt.clouddn.com/image/20190531/TCjGFpwKUP4r.png" alt="mark"></p>
+<p>该部分将编辑向量（edit vector）集成到decoder中进行输出</p>
+<script type="math/tex; mode=display">
+h_{j}^{\prime}=f_{\mathrm{GRU}}\left(h_{j-1}^{\prime}, r_{j-1} \oplus z_{i}\right)</script><script type="math/tex; mode=display">
+c_{i}=\sum_{j=1}^{t} \alpha_{i, j} h_{j}</script><script type="math/tex; mode=display">
+\begin{aligned} \alpha_{i, j} &=\frac{\exp \left(e_{i, j}\right)}{\sum_{k=1}^{t} \exp \left(e_{i, k}\right)} \\ e_{i, j} &=\mathbf{v}^{\top} \tanh \left(\mathbf{W}_{\alpha}\left[h_{j} \oplus h_{i}^{\prime}\right]\right) \end{aligned}</script><script type="math/tex; mode=display">
+s\left(r_{i}\right)=\operatorname{softmax}\left(\mathbf{W}_{\mathbf{p}}\left[r_{i-1} \oplus h_{i}^{\prime} \oplus c_{i}\right]+\mathbf{b}_{\mathbf{p}}\right)</script><h3 id="目标函数"><a href="#目标函数" class="headerlink" title="目标函数"></a>目标函数</h3><script type="math/tex; mode=display">
+\mathcal{L} = - \sum_{i=1}^N\sum_{j=1}^{l}log p(r_{i,j}|z_i, R_{i}^{'}, r_i, k<j)</script><h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><h3 id="实验设置"><a href="#实验设置" class="headerlink" title="实验设置"></a>实验设置</h3><p>实验中去掉了长于30个词的context-response对，2000W训练集，1W开发集，1W测试集。</p>
+<p>optimizer: Adam</p>
+<p>batch size: 128</p>
+<p>learning rate: 0.001 </p>
+<p>复杂度连续两个epoch增加就停止训练</p>
+<h3 id="Baseline"><a href="#Baseline" class="headerlink" title="Baseline"></a>Baseline</h3><p>S2SA: Seq2Seq with attention</p>
+<p>S2SA-MMI：bidirectional-MMI</p>
+<p>CVAE:</p>
+<p>Retrieval-default: Luence</p>
+<p>Retrieval-Rerank: dual-LSTM</p>
+<p>Ensemble:  </p>
+<p><img src="http://ps1hmyafs.bkt.clouddn.com/image/20190531/b5a8kWcFkUVR.png" alt="mark"></p>
+<h3 id="Case-Study"><a href="#Case-Study" class="headerlink" title="Case Study"></a>Case Study</h3><p><img src="http://ps1hmyafs.bkt.clouddn.com/image/20190531/fApi1vQh1WLv.png" alt="mark"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文针对开放领域回复生成（闲聊）提出了一个先检索<strong>“原型”</strong>再<strong>“编辑”</strong>的范式。以后的工作可能会联合训练<strong>prototype selector</strong>和<strong>neural editor</strong>两个部分。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/知识驱动对话/" rel="next" title="知识驱动的对话生成">
+                <i class="fa fa-chevron-left"></i> 知识驱动的对话生成
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Sherlock</p>
+              <div class="site-description motion-element" itemprop="description">Sherlock的技术小站</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#模型"><span class="nav-number">1.</span> <span class="nav-text">模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原型选择器-Prototype-Selector"><span class="nav-number">1.1.</span> <span class="nav-text">原型选择器(Prototype Selector)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上下文感知编辑器（Context-Aware-Neural-Editor）"><span class="nav-number">1.2.</span> <span class="nav-text">上下文感知编辑器（Context-Aware Neural Editor）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Edit-Vector-Generation"><span class="nav-number">1.2.1.</span> <span class="nav-text">Edit Vector Generation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Prototype-Editing"><span class="nav-number">1.2.2.</span> <span class="nav-text">Prototype Editing</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目标函数"><span class="nav-number">1.3.</span> <span class="nav-text">目标函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验"><span class="nav-number">2.</span> <span class="nav-text">实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验设置"><span class="nav-number">2.1.</span> <span class="nav-text">实验设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Baseline"><span class="nav-number">2.2.</span> <span class="nav-text">Baseline</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Case-Study"><span class="nav-number">2.3.</span> <span class="nav-text">Case Study</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sherlock</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
