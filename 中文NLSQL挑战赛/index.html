@@ -104,10 +104,12 @@
 <meta property="og:description" content="比赛官网：https://tianchi.aliyun.com/competition/entrance/231716/information 竞赛题目首届中文NLSQL挑战赛，使用金融以及通用领域的表格作为数据源，提供在此基础上标注的自然语言与SQL语句的匹配对，目的是设计模型准确将自然语言转换成SQL。 数据模型本次赛题提供4w条有标签数据作为训练集，1w条无标签数据作为测试集。其中，5千条">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://aliyuntianchiresult.cn-hangzhou.oss.aliyun-inc.com/public/files/forum/155954005537218641559540055098.jpeg">
+<meta property="og:image" content="http://img2.jintiankansha.me/get?src=http://mmbiz.qpic.cn/mmbiz_png/VBcD02jFhgnXiaAmq9KVAuiaaZLptCv49rQCjezoZa3FkBCb2HwMpuBhmhUaUNe67AnE67hwE18kssWJ7awR7Btg/640?wx_fmt=png">
 <meta property="og:image" content="http://image.sherlocknlp.com/image/20190626/qROywmML3cup.png">
+<meta property="og:image" content="http://img2.jintiankansha.me/get?src=http://mmbiz.qpic.cn/mmbiz_png/VBcD02jFhgnXiaAmq9KVAuiaaZLptCv49rksEzwvBucPfU3DpRGUtZH67MPXibGuguhtnV200Ie6ibrq6iaEe7szOGg/640?wx_fmt=png">
 <meta property="og:image" content="http://image.sherlocknlp.com/image/20190630/mNz6LiUM0yhC.png">
 <meta property="og:image" content="http://image.sherlocknlp.com/image/20190626/YvKaWleyerov.png">
-<meta property="og:updated_time" content="2019-06-30T13:02:35.000Z">
+<meta property="og:updated_time" content="2019-07-03T06:34:37.738Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="中文NLSQL挑战赛">
 <meta name="twitter:description" content="比赛官网：https://tianchi.aliyun.com/competition/entrance/231716/information 竞赛题目首届中文NLSQL挑战赛，使用金融以及通用领域的表格作为数据源，提供在此基础上标注的自然语言与SQL语句的匹配对，目的是设计模型准确将自然语言转换成SQL。 数据模型本次赛题提供4w条有标签数据作为训练集，1w条无标签数据作为测试集。其中，5千条">
@@ -366,12 +368,24 @@
                 
               
 
-              <time title="创建时间：2019-06-30 21:42:10 / 修改时间：21:02:35" itemprop="dateCreated datePublished" datetime="2019-06-30T21:42:10+08:00">2019-06-30</time>
+              <time title="创建时间：2019-07-02 08:39:30" itemprop="dateCreated datePublished" datetime="2019-07-02T08:39:30+08:00">2019-07-02</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-03 14:34:37" itemprop="dateModified" datetime="2019-07-03T14:34:37+08:00">2019-07-03</time>
               
             
           </span>
@@ -424,16 +438,32 @@
 <p>train.tables.json </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;id&quot;:&quot;a1b2c3d4&quot;, # 表格id</span><br><span class="line">    &quot;name&quot;:&quot;Table_a1b2c3d4&quot;, # 表格名称</span><br><span class="line">    &quot;title&quot;:&quot;表1：2019年新开工预测 &quot;, # 表格标题</span><br><span class="line">    &quot;header&quot;:[ # 表格所包含的列名</span><br><span class="line">        &quot;300城市土地出让&quot;,</span><br><span class="line">        &quot;规划建筑面积(万㎡)&quot;,</span><br><span class="line">        ……</span><br><span class="line">    ],</span><br><span class="line">    &quot;types&quot;:[ # 表格列所相应的类型</span><br><span class="line">        &quot;text&quot;,</span><br><span class="line">        &quot;real&quot;,</span><br><span class="line">        ……</span><br><span class="line">    ],</span><br><span class="line">    &quot;rows&quot;:[ # 表格每一行所存储的值</span><br><span class="line">        [</span><br><span class="line">            &quot;2009年7月-2010年6月&quot;,</span><br><span class="line">            168212.4,</span><br><span class="line">            ……</span><br><span class="line">        ]</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>tables.db为sqlite格式的数据库形式的表格文件。各个表的表名为tables.json中相应表格的name字段。为避免部分列名中的特殊符号导致无法存入数据库文件，表格中的列名为经过归一化的字段，col_1, col_2, …, col_n。</p>
-<h2 id="baseline"><a href="#baseline" class="headerlink" title="baseline"></a>baseline</h2><h3 id="SQLNet"><a href="#SQLNet" class="headerlink" title="SQLNet"></a>SQLNet</h3><p><img src="http://image.sherlocknlp.com/image/20190626/qROywmML3cup.png" alt="mark"></p>
+<h2 id="baseline"><a href="#baseline" class="headerlink" title="baseline"></a>baseline</h2><h3 id="SQLNet"><a href="#SQLNet" class="headerlink" title="SQLNet"></a>SQLNet</h3><p><img src="http://img2.jintiankansha.me/get?src=http://mmbiz.qpic.cn/mmbiz_png/VBcD02jFhgnXiaAmq9KVAuiaaZLptCv49rQCjezoZa3FkBCb2HwMpuBhmhUaUNe67AnE67hwE18kssWJ7awR7Btg/640?wx_fmt=png" alt></p>
+<p>该模型将生成整个SQL的任务分解为多个子任务，包括select-number，选择哪一列select-column，使用什么聚合函数select-aggregation，有几个条件condition-number，筛选条件针对哪几列condition-column等。</p>
 <p>paper：<a href="https://arxiv.org/pdf/1711.04436.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1711.04436.pdf</a></p>
 <p>code：<a href="https://github.com/xiaojunxu/SQLNet" target="_blank" rel="noopener">https://github.com/xiaojunxu/SQLNet</a></p>
-<p>该模型将生成整个SQL的任务分解为多个子任务，包括select-number，select-column，select-aggregation，condition-number，condition-column等。该模型使用sketch-based方法，来解决“order-matters”的问题。其中，sketch包括一系列依赖图，使得一个预测只有在他前面的预测完成以后才能开始其他的预测。</p>
-<p><strong>sequence to set</strong></p>
-<p>由于出现在WHERE子句中的列名构成了所有列名集合的子集，因此得到where-column的预测概率如下：</p>
+<p>该模型使用sketch-based方法，来解决“order-matters”的问题。根据数据集中的数据特征以及编写SQL时的先后顺序，各个子任务之间存在如下图所示的依赖关系。这样的依赖关系可以一定程度上利用已预测好的任务来帮助下游任务更好地预测。</p>
+<p><img src="http://image.sherlocknlp.com/image/20190626/qROywmML3cup.png" alt="mark"></p>
+<h4 id="sequence-to-set"><a href="#sequence-to-set" class="headerlink" title="sequence to set"></a>sequence to set</h4><p>由于出现在WHERE子句中的列名构成了所有列名集合的子集，因此得到where-column的预测概率如下：</p>
 <script type="math/tex; mode=display">
 P_{\text { wherecol }}(\operatorname{col} | Q)=\sigma\left(u_{c}^{T} E_{c o l}+u_{q}^{T} E_{Q}\right)</script><p>其中$\sigma$是sigmoid激活函数，$E_{c o l}$和$E_{Q}$分别是列名和Query的embedding。</p>
-<p><strong>column attention</strong></p>
-<h3 id="基于BERT的baseline"><a href="#基于BERT的baseline" class="headerlink" title="基于BERT的baseline"></a>基于BERT的baseline</h3><p><img src="http://image.sherlocknlp.com/image/20190630/mNz6LiUM0yhC.png" alt="mark"></p>
+<h4 id="column-attention"><a href="#column-attention" class="headerlink" title="column attention"></a>column attention</h4><h4 id="OP-slot"><a href="#OP-slot" class="headerlink" title="OP slot"></a>OP slot</h4><h4 id="VALUE-slot"><a href="#VALUE-slot" class="headerlink" title="VALUE slot"></a>VALUE slot</h4><p>感觉<strong>”木桶效应“</strong>的短板就在这里了</p>
+<script type="math/tex; mode=display">
+{P_{\mathrm{val}}(i | Q, c o l, h)=\operatorname{softmax}(a(h))}</script><script type="math/tex; mode=display">
+\\ {a(h)_{i}=\left(u^{\mathrm{val}}\right)^{T} \tanh \left(U_{1}^{\mathrm{val}} H_{Q}^{i}+U_{2}^{\mathrm{val}} E_{c o l}+U_{3}^{\mathrm{val}} h\right) \quad \forall i \in\{1, \ldots, L\}}</script><h3 id="SQLova"><a href="#SQLova" class="headerlink" title="SQLova"></a>SQLova</h3><p>SQLova 是韩国 Naver 提出的一种模型，全名为 Search &amp; QLova，是作者们所在部门的名称。此方案是于 SQLNet 的基础上，在模型结构方面做了一些改进而得到的，并没有提出一些创新性的解决方案。</p>
+<p>SQLova 使用了 BERT 来作为模型的输入表达层，代替了词向量。为了让自然语言问句与表结构更好地结合，模型将自然语言问句与列名一并作为输入进行编码。同时，模型在拼接输入时采用了不同的 Segmentation Embedding 来让 BERT 可以区分问题和列名。</p>
+<p><img src="http://img2.jintiankansha.me/get?src=http://mmbiz.qpic.cn/mmbiz_png/VBcD02jFhgnXiaAmq9KVAuiaaZLptCv49rksEzwvBucPfU3DpRGUtZH67MPXibGuguhtnV200Ie6ibrq6iaEe7szOGg/640?wx_fmt=png" alt></p>
+<h3 id="X-SQL"><a href="#X-SQL" class="headerlink" title="X-SQL"></a>X-SQL</h3><p>X-SQL 是微软 Dynamics 365 提出一种方案。这个方案同样继承了解耦任务的思路，将预测 SQL 分解为 6 个子任务。但不同于 SQLova，X-SQL 引入了更多创新性的一些改进，主要包括以下几个方面。 </p>
+<ul>
+<li><p>首先，X-SQL 使用了 MT-DNN 来作为编码层，代替了 SQLova 中使用的 BERT，因为 MT-DNN 在很多其它自然语言处理的下游任务上取得了比 BERT 更好的效果。但因为作者并没有提供对比实验，所以 MT-DNN 可以比 BERT 带来多少的提升就不得而知。 </p>
+</li>
+<li><p>其次，X-SQL 在 SQLova 中原有的 Question Segmentation 和 Column Segmentation 的基础上拓展为 Question、Categorical Column、Numerical Column 以及 Empty Column 这四种 Segmentation Embedding，分别用来作为<strong>自然语言问句</strong>、<strong>文本类型的列</strong>、<strong>数字类型的列</strong>以及<strong>空列</strong>的相应输入。通过引入更多的分类表达，可以让模型得以区分数字与文本类型的列，进而更好地生成 SQL。 </p>
+</li>
+<li><p>最后，在输出层与损失函数部分，Where-Column 的损失函数被定义为了 KL 散度。并且，借助之前提到的引入的特殊列 [EMPTY]，如果模型在预测 Where-Column 时，分数最高的列是 [EMPTY]，那么就无视 Where-Number 所得到的预测结果，判断 SQL 语句为没有条件。 </p>
+</li>
+</ul>
+<p>通过这些输入与结构上的优化，X-SQL 可以在 WikiSQL 的测试集上取得 86.0% 的 Logic Form 准确率和 91.8% 的 Execution 准确率。 </p>
+<h3 id="苏剑林老师基于BERT的baseline"><a href="#苏剑林老师基于BERT的baseline" class="headerlink" title="苏剑林老师基于BERT的baseline"></a>苏剑林老师基于BERT的baseline</h3><p><img src="http://image.sherlocknlp.com/image/20190630/mNz6LiUM0yhC.png" alt="mark"></p>
 <p>代码：<a href="https://github.com/bojone/bert_in_keras/blob/master/nl2sql_baseline.py" target="_blank" rel="noopener">https://github.com/bojone/bert_in_keras/blob/master/nl2sql_baseline.py</a></p>
 <h2 id="评价标准"><a href="#评价标准" class="headerlink" title="评价标准"></a>评价标准</h2><p><strong>Logic Form Accuracy</strong>: 预测完全正确的SQL语句。其中，列的顺序并不影响准确率的计算。<br><strong>Execution Accuracy</strong>: 预测的SQL的执行结果与真实SQL的执行结果一致。</p>
 <p>计算公式如下：</p>
@@ -596,7 +626,7 @@ A c c_{e x}=\frac{1}{N} \sum_{n=1}^{N} S c o r e_{e x}^{n}</script><p>最后线�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#竞赛题目"><span class="nav-number">1.</span> <span class="nav-text">竞赛题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据模型"><span class="nav-number">2.</span> <span class="nav-text">数据模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#baseline"><span class="nav-number">3.</span> <span class="nav-text">baseline</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SQLNet"><span class="nav-number">3.1.</span> <span class="nav-text">SQLNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于BERT的baseline"><span class="nav-number">3.2.</span> <span class="nav-text">基于BERT的baseline</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评价标准"><span class="nav-number">4.</span> <span class="nav-text">评价标准</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他相似任务"><span class="nav-number">5.</span> <span class="nav-text">其他相似任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#竞赛题目"><span class="nav-number">1.</span> <span class="nav-text">竞赛题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据模型"><span class="nav-number">2.</span> <span class="nav-text">数据模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#baseline"><span class="nav-number">3.</span> <span class="nav-text">baseline</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SQLNet"><span class="nav-number">3.1.</span> <span class="nav-text">SQLNet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sequence-to-set"><span class="nav-number">3.1.1.</span> <span class="nav-text">sequence to set</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#column-attention"><span class="nav-number">3.1.2.</span> <span class="nav-text">column attention</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OP-slot"><span class="nav-number">3.1.3.</span> <span class="nav-text">OP slot</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VALUE-slot"><span class="nav-number">3.1.4.</span> <span class="nav-text">VALUE slot</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQLova"><span class="nav-number">3.2.</span> <span class="nav-text">SQLova</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#X-SQL"><span class="nav-number">3.3.</span> <span class="nav-text">X-SQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#苏剑林老师基于BERT的baseline"><span class="nav-number">3.4.</span> <span class="nav-text">苏剑林老师基于BERT的baseline</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评价标准"><span class="nav-number">4.</span> <span class="nav-text">评价标准</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他相似任务"><span class="nav-number">5.</span> <span class="nav-text">其他相似任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
