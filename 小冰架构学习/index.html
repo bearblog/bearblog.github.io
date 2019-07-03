@@ -96,23 +96,22 @@
 
 
 
-  <meta name="description" content="论文题目：Emotional Chatting Machine: Emotional Conversation Generation with Internal and External Memory 论文链接：https://arxiv.org/abs/1704.01074 代码链接：https://github.com/tuxchow/ecm AAAI 2019 Introduction朱小燕">
+  <meta name="description" content="设计思想如何评价小冰Open Domain Social Long-term Dialogue System的性能？ 单次对话论述 Conversation-turns Per Session(CPS)作为评估社交聊天机器人成功的指标。CPS越大，社交聊天机器人的对话参与能力就越好。第六代小冰的CPS已经从第一代的5提升到23。 IQ+EQ+Personality 社交聊天机器人需要足够高的智商">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《情感对话生成》阅读笔记">
-<meta property="og:url" content="http://www.sherlocknlp.com/《Emotional Chatting Machine Emotional Conversation Generation with Internal》/index.html">
+<meta property="og:title" content="小冰架构学习">
+<meta property="og:url" content="http://www.sherlocknlp.com/小冰架构学习/index.html">
 <meta property="og:site_name" content="Sherlockの小酒馆">
-<meta property="og:description" content="论文题目：Emotional Chatting Machine: Emotional Conversation Generation with Internal and External Memory 论文链接：https://arxiv.org/abs/1704.01074 代码链接：https://github.com/tuxchow/ecm AAAI 2019 Introduction朱小燕">
+<meta property="og:description" content="设计思想如何评价小冰Open Domain Social Long-term Dialogue System的性能？ 单次对话论述 Conversation-turns Per Session(CPS)作为评估社交聊天机器人成功的指标。CPS越大，社交聊天机器人的对话参与能力就越好。第六代小冰的CPS已经从第一代的5提升到23。 IQ+EQ+Personality 社交聊天机器人需要足够高的智商">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/9920911672A94FE9A3119AFD6253720B?method=download&shareKey=e00d16fb600abf76761f4b92e2c54951">
-<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/B280DF312FF744F0A06C31EC5A18947D?method=download&shareKey=12ecdb0a8fa62c1909dfc87c851a6024">
-<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/F761136507CB4D248E3FFC6CE5F9F4BA?method=download&shareKey=733e71450c39674c12a6ea371be49ac5">
-<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/DA8FDAA8F8B245B1B399018A62045AA9?method=download&shareKey=9a873c20e10345844386f4a69605c2b0">
-<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/516AB12A9A254BBAA7D7358FB9974742?method=download&shareKey=e900cb0b52de4cf12c712d6e6309dfe8">
-<meta property="og:updated_time" content="2019-06-21T02:42:53.074Z">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/104214/1546396005189-1beef810-d825-4ea8-8597-3806892e92d4.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/104214/1546398672251-b8e722bc-4c4f-4a68-b363-c5f85ec5269a.png">
+<meta property="og:image" content="http://image.sherlocknlp.com/image/20190627/LYBy1QUaoGK4.png">
+<meta property="og:image" content="http://image.sherlocknlp.com/image/20190627/ssSoBWfXdGoo.png">
+<meta property="og:updated_time" content="2019-07-03T08:50:26.302Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《情感对话生成》阅读笔记">
-<meta name="twitter:description" content="论文题目：Emotional Chatting Machine: Emotional Conversation Generation with Internal and External Memory 论文链接：https://arxiv.org/abs/1704.01074 代码链接：https://github.com/tuxchow/ecm AAAI 2019 Introduction朱小燕">
-<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/9920911672A94FE9A3119AFD6253720B?method=download&shareKey=e00d16fb600abf76761f4b92e2c54951">
+<meta name="twitter:title" content="小冰架构学习">
+<meta name="twitter:description" content="设计思想如何评价小冰Open Domain Social Long-term Dialogue System的性能？ 单次对话论述 Conversation-turns Per Session(CPS)作为评估社交聊天机器人成功的指标。CPS越大，社交聊天机器人的对话参与能力就越好。第六代小冰的CPS已经从第一代的5提升到23。 IQ+EQ+Personality 社交聊天机器人需要足够高的智商">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/png/104214/1546396005189-1beef810-d825-4ea8-8597-3806892e92d4.png">
 
 
 
@@ -120,7 +119,7 @@
 
   
   
-  <link rel="canonical" href="http://www.sherlocknlp.com/《Emotional Chatting Machine Emotional Conversation Generation with Internal》/">
+  <link rel="canonical" href="http://www.sherlocknlp.com/小冰架构学习/">
 
 
 
@@ -130,7 +129,7 @@
   };
 </script>
 
-  <title>《情感对话生成》阅读笔记 | Sherlockの小酒馆</title>
+  <title>小冰架构学习 | Sherlockの小酒馆</title>
   
 
 
@@ -358,7 +357,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.sherlocknlp.com/《Emotional Chatting Machine Emotional Conversation Generation with Internal》/">
+    <link itemprop="mainEntityOfPage" href="http://www.sherlocknlp.com/小冰架构学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sherlock">
@@ -375,7 +374,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">《情感对话生成》阅读笔记
+          <h1 class="post-title" itemprop="name headline">小冰架构学习
 
               
             
@@ -401,12 +400,24 @@
                 
               
 
-              <time title="创建时间：2019-06-21 10:42:19 / 修改时间：10:42:53" itemprop="dateCreated datePublished" datetime="2019-06-21T10:42:19+08:00">2019-06-21</time>
+              <time title="创建时间：2019-06-27 13:35:55" itemprop="dateCreated datePublished" datetime="2019-06-27T13:35:55+08:00">2019-06-27</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-03 16:50:26" itemprop="dateModified" datetime="2019-07-03T16:50:26+08:00">2019-07-03</time>
               
             
           </span>
@@ -447,54 +458,50 @@
       
 
       
-        <p>论文题目：Emotional Chatting Machine: Emotional Conversation Generation with Internal and External Memory</p>
-<p>论文链接：<a href="https://arxiv.org/abs/1704.01074" target="_blank" rel="noopener">https://arxiv.org/abs/1704.01074</a></p>
-<p>代码链接：<a href="https://github.com/tuxchow/ecm" target="_blank" rel="noopener">https://github.com/tuxchow/ecm</a></p>
-<p>AAAI 2019</p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>朱小燕、黄民烈老师团队发布的论文<a href="https://arxiv.org/abs/1704.01074" target="_blank" rel="noopener">「 Emotional Chatting Machine: Emotional Conversation Generation with Internal and External Memory」</a>首次将情感因素引入了基于深度学习的生成式对话系统，提出了基于记忆网络的情感对话系统 <strong>Emotional Chatting Machine (ECM)</strong> ，在传统的 <strong>Sequence to Sequence</strong> 模型的基础上，ECM 使用了<strong>静态的情感向量嵌入表示</strong>，<strong>动态的情感状态记忆网络</strong>和<strong>情感词外部记忆的机制</strong>，使得 ECM 可以根据用户的输入以及指定情感分类输出相应情感的回复语句。</p>
-<p>代码链接：<a href="https://github.com/tuxchow/ecm" target="_blank" rel="noopener">https://github.com/tuxchow/ecm</a></p>
-<p><img src="https://note.youdao.com/yws/api/personal/file/9920911672A94FE9A3119AFD6253720B?method=download&amp;shareKey=e00d16fb600abf76761f4b92e2c54951" alt="ecm_table1"></p>
-<p>本文用输入作为一种提示和期望的情感的反应，来产生一个回答，采用NLPCC数据集训练一个情感分类器，利用分类器对大规模的对话数据进行自动标注，划分了六类情感，怒、厌恶、快乐、喜欢、悲伤和其他，并用三元数据向量（posts，responses, emotion labels of responses)训练ECM模型。本文设计了一个ECM（Emotional Chatting Machine）框架的，基于记忆网络memory的具有情感生成机制的seq2seq编解码生成模型，模型利用GRU进行编解码。</p>
-<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><p><img src="https://note.youdao.com/yws/api/personal/file/B280DF312FF744F0A06C31EC5A18947D?method=download&amp;shareKey=12ecdb0a8fa62c1909dfc87c851a6024" alt="model_structure"></p>
-<p>模型的总体框架如上图所示，用户问题输入为“What a lovely day!”，通过 Encoder 将其编码为隐向量表示 h，然后通过注意力机制，结合 decoder 的状态向量 $s$ 在生成不同的词时，对问题的隐向量表示 h 的不同部分的信息选择性的加强，得到向量 $c$。指定情感类别为“Happiness”，经过索引得到情感类别嵌入向量，初始的情感状态记忆向量和相应的情感词表。decoder 接受经过注意力机制的问题向量 $c$，情感类别嵌入向量和初始的情感状态记忆向量作为输入，通过循环神经网络生成下个词的生成概率 o，之后再经过情感词表对情感词和非情感词的加权，得到最终词的生成概率，通过采样即可得到输出“Haha, so happy today!”。</p>
-<h3 id="Encoder-Decoder-Attn框架"><a href="#Encoder-Decoder-Attn框架" class="headerlink" title="Encoder-Decoder-Attn框架"></a>Encoder-Decoder-Attn框架</h3><p><img src="https://note.youdao.com/yws/api/personal/file/F761136507CB4D248E3FFC6CE5F9F4BA?method=download&amp;shareKey=733e71450c39674c12a6ea371be49ac5" alt="attention"></p>
-<p>编码器将输入序列$X=(x_1,x_2,…, x_n)$转化为隐层表示$h=(h_1,h_2,…, h_n)$:</p>
-<script type="math/tex; mode=display">
-h_t = GRU(h_{t-1}, x_t)</script><p>解码器将上下文向量（context vector）$c_t$和上一个已解码的词向量$e(y_{t-1})$作为输入，使用另一个GRU来更新隐层状态：</p>
-<script type="math/tex; mode=display">
-s_t = GRU(s_{t-1},[c_t;e(y_{t-1})])</script><p>$[c_t;e(y_{t-1})]$是两个向量的级联，在我们得到隐层向量$s_t$之后，解码器通过计算得到输出概率分布$o_t$生成新的词：</p>
-<script type="math/tex; mode=display">
-y_t o_t = P(y_t|y_1,y_2,...,y_{t-1},c_t)
-
-= softmax(W_os_t)</script><h3 id="Emotional-Category-Embedding"><a href="#Emotional-Category-Embedding" class="headerlink" title="Emotional Category Embedding"></a>Emotional Category Embedding</h3><p>将情感的类别编码成低维度的向量，然后将情感向量$v_e$、向量$e(y_{t-1})$和上下文向量$c_t$合并到一起作为解码器的输入更新解码器的隐层状态$s_t$：</p>
-<script type="math/tex; mode=display">
-s_{t}=GRU(s_{t-1}, [c_t;e(y_{t-1});v_e])</script><h3 id="Internal-Memory"><a href="#Internal-Memory" class="headerlink" title="Internal Memory"></a>Internal Memory</h3><p>Affect-lm模型论文中提到简单的情感向量嵌入的方式会影响句子语法的准确性。因此，本文设计了一个内部记忆模块在解码时捕捉情感的动态变化。</p>
-<p><img src="https://note.youdao.com/yws/api/personal/file/DA8FDAA8F8B245B1B399018A62045AA9?method=download&amp;shareKey=9a873c20e10345844386f4a69605c2b0" alt="inter_memory"></p>
-<p>本模块受到<a href="https://arxiv.org/abs/1705.04839" target="_blank" rel="noopener">Annotating and modeling empathy in spoken conversations</a>这篇论文启发，具体结构如上图。在每个时间步都会计算Read Gate $g_t^r$和Write Gate $g_t^r$：</p>
-<script type="math/tex; mode=display">
-g_t^r = sigmoid(W_g^r[e(y_{t-1});s_{t-1};c_t])</script><script type="math/tex; mode=display">
-g_t^w = sigmoid(W_g^w[e(s_t])</script><p>$g_t^r$和$g_t^w$是用来对内部记忆模块进行读写操作的。这样每一个时间步,情感状态都会被$g_t^w$消除一部分，这与<a href="https://arxiv.org/abs/1606.03126" target="_blank" rel="noopener">Key-value memory networks</a>中<strong>DELETE</strong>操作十分相似。在最后一步时内部的情感信息会被减少至0，表示情感已经被全部表达。</p>
-<script type="math/tex; mode=display">
-M_{r,t}^I = g_t^r \bigotimes M_{e,t}^I</script><script type="math/tex; mode=display">
-M_{r,t+1}^I = g_t^w \bigotimes M_{e,t}^I</script><script type="math/tex; mode=display">
-s_t = GRU(s_{t-1}, [c_t;e(y_{t-1};M_{e,t}^I)])</script><h3 id="External-Memory"><a href="#External-Memory" class="headerlink" title="External Memory"></a>External Memory</h3><p>针对不同的词汇所表达的感情，模型使用External Memory模块来建模显式的情感表达，给情感词汇和普通词汇赋予不同的生成概率。因此，模型可以选择从情感词汇和普通词汇中选择生成一个词。</p>
-<p><img src="https://note.youdao.com/yws/api/personal/file/516AB12A9A254BBAA7D7358FB9974742?method=download&amp;shareKey=e900cb0b52de4cf12c712d6e6309dfe8" alt></p>
-<script type="math/tex; mode=display">
-\alpha_t = sigmoid(v_u^T s_t)</script><script type="math/tex; mode=display">
-P_g(y_t=w_g) = softmax(W_g^o s_t)</script><script type="math/tex; mode=display">
-P_e(y_t=w_e) = softmax(W_e^o s_t)</script><script type="math/tex; mode=display">
-y_t o_t =P(y_t) = \alpha_t P_e(y_t=w_e) + (1-\alpha_t) P_y(y_t=w_g)</script><h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><script type="math/tex; mode=display">
-L(\theta) = - \sum_{t=1}^{m} p_t log(o_t) - \sum_{t=1}^{m} q_tlog(\alpha_t) + ||M_{e,m}^{I}||</script><h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><p>数据集：<a href="http://coai.cs.tsinghua.edu.cn/hml/challenge2017/" target="_blank" rel="noopener">NLPCC2017 Shared Task 4</a></p>
-<p>情感分类数据集：NLPCC20132 and NLPCC20143（中文数据）<br>The taxonomy comes from <a href="http://tcci.ccf.org.cn/confere-nce/2014/dldoc/evatask1.pdf" target="_blank" rel="noopener">http://tcci.ccf.org.cn/confere-nce/2014/dldoc/evatask1.pdf</a></p>
-<p>大连理工的情感词汇数据集：<a href="http://ir.dlut.edu.cn/news/detail/215" target="_blank" rel="noopener">http://ir.dlut.edu.cn/news/detail/215</a></p>
-<h2 id="主要参考文献"><a href="#主要参考文献" class="headerlink" title="主要参考文献"></a>主要参考文献</h2><ul>
-<li><p>[Ghosh et al. 2017] Ghosh, S.; Chollet, M.; Laksana, E.;<br>Morency, L.; and Scherer, S. 2017. Affect-lm: A neural<br>language model for customizable affective text generation.<br>In ACL, 634–642.</p>
-</li>
-<li><p>[Alam, Danieli, and Riccardi 2017] Alam, F.; Danieli, M.;<br>and Riccardi, G. 2017. Annotating and modeling empathy<br>in spoken conversations. CoRR abs/1705.04839.</p>
-</li>
-<li><p>[Miller et al. 2016] Miller, A. H.; Fisch, A.; Dodge, J.;<br>Karimi, A.; Bordes, A.; and Weston, J. 2016. Keyvalue<br>memory networks for directly reading documents. In<br>EMNLP, 1400–1409.</p>
-</li>
+        <p><img src="https://cdn.nlark.com/yuque/0/2019/png/104214/1546396005189-1beef810-d825-4ea8-8597-3806892e92d4.png" alt></p>
+<h2 id="设计思想"><a href="#设计思想" class="headerlink" title="设计思想"></a>设计思想</h2><p><strong>如何评价小冰Open Domain Social Long-term Dialogue System的性能？</strong></p>
+<p>单次对话论述 Conversation-turns Per Session(CPS)作为评估社交聊天机器人成功的指标。CPS越大，社交聊天机器人的对话参与能力就越好。第六代小冰的CPS已经从第一代的5提升到23。</p>
+<p><strong>IQ+EQ+Personality</strong></p>
+<p>社交聊天机器人需要足够高的智商（IQ）来学习多种技能，才能紧跟用户需求，帮助他们完成指定任务。同时，社交聊天机器人还需要足够高的情商（EQ），以满足用户情感的需求，比如情绪感受和社会归属感。</p>
+<ul>
+<li><strong>IQ：</strong>IQ能力包括知识和记忆建模、图像和自然语言理解、推理生成和预测。为了满足用户的特定需求以及帮助用户完成指定的任务，这些能力是不可或缺的。其中最重要且最复杂的技能是核心聊天（Core Chat），即与用户在多个主题上展开长时间和开放域的对话</li>
+<li><strong>EQ：</strong></li>
+<li><strong>Personality：</strong>符合小冰既有的风格</li>
 </ul>
+<p><strong>将社交聊天视为分层决策</strong></p>
+<p>对话可被视为有自然层级的决策过程：一个顶级过程管理者整体的对话并选取不同的技能来处理不同类型 的对话模式（比如闲聊、问答、订票）；低级过程则受所选择的技能控制。可选择基本动作（响应），从而生成对话段落或完成任务。</p>
+<h2 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h2><p><img src="https://cdn.nlark.com/yuque/0/2019/png/104214/1546398672251-b8e722bc-4c4f-4a68-b363-c5f85ec5269a.png" alt></p>
+<p>上图为小冰的整体架构，其包含三层：用户体验层、对话引擎层和数据层。</p>
+<h3 id="用户体验层"><a href="#用户体验层" class="headerlink" title="用户体验层"></a>用户体验层</h3><h3 id="对话引擎层"><a href="#对话引擎层" class="headerlink" title="对话引擎层"></a>对话引擎层</h3><p>对话引擎层中的四个主要组件：对话管理、共情计算、核心聊天和技能。</p>
+<h4 id="对话管理"><a href="#对话管理" class="headerlink" title="对话管理"></a>对话管理</h4><p>对话管理除了记录<strong>对话历史</strong>还要包括策略管理，即管理什么时候触发Skill什么时候切换。同时，Conversation还受到Topic的管理。在Pretrain的阶段得到Topic Index，当触发Topic切换的标志时，例如：</p>
+<ol>
+<li>Core Chat未能生成有效的候选集</li>
+<li>生成的响应知识用户输入的重复</li>
+<li>用户输入变得平淡</li>
+</ol>
+<p>则调用Topic切换，切换之后的Topic根据以下几个指标选取：</p>
+<ol>
+<li>上下文关联性</li>
+<li>新鲜度</li>
+<li>个人兴趣</li>
+<li>热度</li>
+<li>接受度</li>
+</ol>
+<h4 id="共情计算（Empathetic-Computing）"><a href="#共情计算（Empathetic-Computing）" class="headerlink" title="共情计算（Empathetic Computing）"></a>共情计算（Empathetic Computing）</h4><p>共情度计算是小冰相对独特的一点，它不是直接把Context和Reply进行匹配得到一个Match Score。而是由Query, Context, Reply及情景分析得到一个$s=\left(Q_{c}, C, e_{Q}, e_{R}\right)$向量，再由向量$s$计算出候选回复。</p>
+<p><strong>Contextual Query Understanding</strong></p>
+<p>本模块的主要任务是对Context进行补全，通过命名实体识别和指代消解的方法，对对话历史信息进行补全。</p>
+<p><strong>User Understand</strong></p>
+<p><strong>Interpersonal Response Generation</strong></p>
+<h4 id="核心聊天（Core-chat）"><a href="#核心聊天（Core-chat）" class="headerlink" title="核心聊天（Core chat）"></a>核心聊天（Core chat）</h4><p>小冰在处理语言生成的时候使用两阶段法，先构造Reply候选集，然后通过计算每个Reply的得分（Score）选出最优答案。</p>
+<p><img src="http://image.sherlocknlp.com/image/20190627/LYBy1QUaoGK4.png" alt="mark"></p>
+<p><strong>Retrieval-Based Using Paired Data</strong></p>
+<p><strong>Neural Generate</strong></p>
+<p><strong>Retrieval-Based Using Unpaired Data</strong></p>
+<p><strong>Rank</strong></p>
+<h3 id="数据层"><a href="#数据层" class="headerlink" title="数据层"></a>数据层</h3><p><img src="http://image.sherlocknlp.com/image/20190627/ssSoBWfXdGoo.png" alt="mark"></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://wyydsb.xin/" target="_blank" rel="noopener">直男届的杀手-『小冰』架构解析</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/53667904" target="_blank" rel="noopener">沈向洋等人论文详解微软小冰，公开研发细节</a></p>
+<p><a href="https://arxiv.org/pdf/1812.08989.pdf" target="_blank" rel="noopener">The Design and Implementation of XiaoIce, an Empathetic Social Chatbot. Li Zhou et al. 18.12</a></p>
 
       
     </div>
@@ -525,8 +532,8 @@ L(\theta) = - \sum_{t=1}^{m} p_t log(o_t) - \sum_{t=1}^{m} q_tlog(\alpha_t) + ||
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/《通过对响应原型编辑的回复生成》阅读笔记/" rel="next" title="《通过对响应原型编辑的回复生成》阅读笔记">
-                <i class="fa fa-chevron-left"></i> 《通过对响应原型编辑的回复生成》阅读笔记
+              <a href="/《Emotional Chatting Machine Emotional Conversation Generation with Internal》/" rel="next" title="《情感对话生成》阅读笔记">
+                <i class="fa fa-chevron-left"></i> 《情感对话生成》阅读笔记
               </a>
             
           </div>
@@ -535,8 +542,8 @@ L(\theta) = - \sum_{t=1}^{m} p_t log(o_t) - \sum_{t=1}^{m} q_tlog(\alpha_t) + ||
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/小冰架构学习/" rel="prev" title="小冰架构学习">
-                小冰架构学习 <i class="fa fa-chevron-right"></i>
+              <a href="/基于 Hexo + Github Pages 搭建个人博客/" rel="prev" title="基于 Hexo + Github Pages 搭建个人博客">
+                基于 Hexo + Github Pages 搭建个人博客 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -676,7 +683,7 @@ L(\theta) = - \sum_{t=1}^{m} p_t log(o_t) - \sum_{t=1}^{m} q_tlog(\alpha_t) + ||
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model"><span class="nav-number">2.</span> <span class="nav-text">Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Encoder-Decoder-Attn框架"><span class="nav-number">2.1.</span> <span class="nav-text">Encoder-Decoder-Attn框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Emotional-Category-Embedding"><span class="nav-number">2.2.</span> <span class="nav-text">Emotional Category Embedding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Internal-Memory"><span class="nav-number">2.3.</span> <span class="nav-text">Internal Memory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#External-Memory"><span class="nav-number">2.4.</span> <span class="nav-text">External Memory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数"><span class="nav-number">2.5.</span> <span class="nav-text">损失函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据集"><span class="nav-number">3.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要参考文献"><span class="nav-number">4.</span> <span class="nav-text">主要参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#设计思想"><span class="nav-number">1.</span> <span class="nav-text">设计思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统架构"><span class="nav-number">2.</span> <span class="nav-text">系统架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户体验层"><span class="nav-number">2.1.</span> <span class="nav-text">用户体验层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对话引擎层"><span class="nav-number">2.2.</span> <span class="nav-text">对话引擎层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对话管理"><span class="nav-number">2.2.1.</span> <span class="nav-text">对话管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#共情计算（Empathetic-Computing）"><span class="nav-number">2.2.2.</span> <span class="nav-text">共情计算（Empathetic Computing）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#核心聊天（Core-chat）"><span class="nav-number">2.2.3.</span> <span class="nav-text">核心聊天（Core chat）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据层"><span class="nav-number">2.3.</span> <span class="nav-text">数据层</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
