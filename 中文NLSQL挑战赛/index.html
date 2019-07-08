@@ -109,7 +109,7 @@
 <meta property="og:image" content="http://img2.jintiankansha.me/get?src=http://mmbiz.qpic.cn/mmbiz_png/VBcD02jFhgnXiaAmq9KVAuiaaZLptCv49rksEzwvBucPfU3DpRGUtZH67MPXibGuguhtnV200Ie6ibrq6iaEe7szOGg/640?wx_fmt=png">
 <meta property="og:image" content="http://image.sherlocknlp.com/image/20190630/mNz6LiUM0yhC.png">
 <meta property="og:image" content="http://image.sherlocknlp.com/image/20190626/YvKaWleyerov.png">
-<meta property="og:updated_time" content="2019-07-03T06:34:37.000Z">
+<meta property="og:updated_time" content="2019-07-05T01:56:44.615Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="中文NLSQL挑战赛">
 <meta name="twitter:description" content="比赛官网：https://tianchi.aliyun.com/competition/entrance/231716/information 竞赛题目首届中文NLSQL挑战赛，使用金融以及通用领域的表格作为数据源，提供在此基础上标注的自然语言与SQL语句的匹配对，目的是设计模型准确将自然语言转换成SQL。 数据模型本次赛题提供4w条有标签数据作为训练集，1w条无标签数据作为测试集。其中，5千条">
@@ -404,16 +404,46 @@
                 
               
 
-              <time title="创建时间：2019-07-03 19:29:39 / 修改时间：14:34:37" itemprop="dateCreated datePublished" datetime="2019-07-03T19:29:39+08:00">2019-07-03</time>
+              <time title="创建时间：2019-07-02 08:39:30" itemprop="dateCreated datePublished" datetime="2019-07-02T08:39:30+08:00">2019-07-02</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-05 09:56:44" itemprop="dateModified" datetime="2019-07-05T09:56:44+08:00">2019-07-05</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NLP/" itemprop="url" rel="index"><span itemprop="name">NLP</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -499,10 +529,13 @@
 <h4 id="sequence-to-set"><a href="#sequence-to-set" class="headerlink" title="sequence to set"></a>sequence to set</h4><p>由于出现在WHERE子句中的列名构成了所有列名集合的子集，因此得到where-column的预测概率如下：</p>
 <script type="math/tex; mode=display">
 P_{\text { wherecol }}(\operatorname{col} | Q)=\sigma\left(u_{c}^{T} E_{c o l}+u_{q}^{T} E_{Q}\right)</script><p>其中$\sigma$是sigmoid激活函数，$E_{c o l}$和$E_{Q}$分别是列名和Query的embedding。</p>
-<h4 id="column-attention"><a href="#column-attention" class="headerlink" title="column attention"></a>column attention</h4><h4 id="OP-slot"><a href="#OP-slot" class="headerlink" title="OP slot"></a>OP slot</h4><h4 id="VALUE-slot"><a href="#VALUE-slot" class="headerlink" title="VALUE slot"></a>VALUE slot</h4><p>感觉<strong>”木桶效应“</strong>的短板就在这里了</p>
+<h4 id="column-attention"><a href="#column-attention" class="headerlink" title="column attention"></a>column attention</h4><h4 id="OP-slot"><a href="#OP-slot" class="headerlink" title="OP slot"></a>OP slot</h4><h4 id="VALUE-slot"><a href="#VALUE-slot" class="headerlink" title="VALUE slot."></a>VALUE slot.</h4><p>感觉<strong>”木桶效应“</strong>的短板就在这里了，此处解码器使用的是<strong>pointer network</strong>+<strong>column attention</strong>。</p>
 <script type="math/tex; mode=display">
 {P_{\mathrm{val}}(i | Q, c o l, h)=\operatorname{softmax}(a(h))}</script><script type="math/tex; mode=display">
-\\ {a(h)_{i}=\left(u^{\mathrm{val}}\right)^{T} \tanh \left(U_{1}^{\mathrm{val}} H_{Q}^{i}+U_{2}^{\mathrm{val}} E_{c o l}+U_{3}^{\mathrm{val}} h\right) \quad \forall i \in\{1, \ldots, L\}}</script><h3 id="SQLova"><a href="#SQLova" class="headerlink" title="SQLova"></a>SQLova</h3><p>SQLova 是韩国 Naver 提出的一种模型，全名为 Search &amp; QLova，是作者们所在部门的名称。此方案是于 SQLNet 的基础上，在模型结构方面做了一些改进而得到的，并没有提出一些创新性的解决方案。</p>
+\\ {a(h)_{i}=\left(u^{\mathrm{val}}\right)^{T} \tanh \left(U_{1}^{\mathrm{val}} H_{Q}^{i}+U_{2}^{\mathrm{val}} E_{c o l}+U_{3}^{\mathrm{val}} h\right) \quad \forall i \in\{1, \ldots, L\}}</script><p>$P_{\mathrm{val}}(i | Q, c o l, h)$代表着下一个token生成的概率。SQLNet简单地选择最有可能的token生成，直到生成<end>终止符为止。</end></p>
+<h3 id="SQLova"><a href="#SQLova" class="headerlink" title="SQLova"></a>SQLova</h3><p>SQLova 是韩国 Naver 提出的一种模型，全名为 Search &amp; QLova，是作者们所在部门的名称。此方案是于 SQLNet 的基础上，在模型结构方面做了一些改进而得到的，并没有提出一些创新性的解决方案。</p>
+<p>paper：</p>
+<p>code：<a href="https://github.com/naver/sqlova" target="_blank" rel="noopener">https://github.com/naver/sqlova</a></p>
 <p>SQLova 使用了 BERT 来作为模型的输入表达层，代替了词向量。为了让自然语言问句与表结构更好地结合，模型将自然语言问句与列名一并作为输入进行编码。同时，模型在拼接输入时采用了不同的 Segmentation Embedding 来让 BERT 可以区分问题和列名。</p>
 <p><img src="http://img2.jintiankansha.me/get?src=http://mmbiz.qpic.cn/mmbiz_png/VBcD02jFhgnXiaAmq9KVAuiaaZLptCv49rksEzwvBucPfU3DpRGUtZH67MPXibGuguhtnV200Ie6ibrq6iaEe7szOGg/640?wx_fmt=png" alt></p>
 <h3 id="X-SQL"><a href="#X-SQL" class="headerlink" title="X-SQL"></a>X-SQL</h3><p>X-SQL 是微软 Dynamics 365 提出一种方案。这个方案同样继承了解耦任务的思路，将预测 SQL 分解为 6 个子任务。但不同于 SQLova，X-SQL 引入了更多创新性的一些改进，主要包括以下几个方面。 </p>
@@ -583,8 +616,8 @@ A c c_{e x}=\frac{1}{N} \sum_{n=1}^{N} S c o r e_{e x}^{n}</script><p>最后线�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/基于 Hexo + Github Pages 搭建个人博客/" rel="next" title="基于 Hexo + Github Pages 搭建个人博客">
-                <i class="fa fa-chevron-left"></i> 基于 Hexo + Github Pages 搭建个人博客
+              <a href="/《通过对响应原型编辑的回复生成》阅读笔记/" rel="next" title="《通过对响应原型编辑的回复生成》阅读笔记">
+                <i class="fa fa-chevron-left"></i> 《通过对响应原型编辑的回复生成》阅读笔记
               </a>
             
           </div>
@@ -593,8 +626,8 @@ A c c_{e x}=\frac{1}{N} \sum_{n=1}^{N} S c o r e_{e x}^{n}</script><p>最后线�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/《通过对响应原型编辑的回复生成》阅读笔记/" rel="prev" title="《通过对响应原型编辑的回复生成》阅读笔记">
-                《通过对响应原型编辑的回复生成》阅读笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/小冰架构学习/" rel="prev" title="小冰架构学习">
+                小冰架构学习 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -666,7 +699,7 @@ A c c_{e x}=\frac{1}{N} \sum_{n=1}^{N} S c o r e_{e x}^{n}</script><p>最后线�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -706,7 +739,9 @@ A c c_{e x}=\frac{1}{N} \sum_{n=1}^{N} S c o r e_{e x}^{n}</script><p>最后线�
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -776,7 +811,7 @@ A c c_{e x}=\frac{1}{N} \sum_{n=1}^{N} S c o r e_{e x}^{n}</script><p>最后线�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#竞赛题目"><span class="nav-number">1.</span> <span class="nav-text">竞赛题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据模型"><span class="nav-number">2.</span> <span class="nav-text">数据模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#baseline"><span class="nav-number">3.</span> <span class="nav-text">baseline</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SQLNet"><span class="nav-number">3.1.</span> <span class="nav-text">SQLNet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sequence-to-set"><span class="nav-number">3.1.1.</span> <span class="nav-text">sequence to set</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#column-attention"><span class="nav-number">3.1.2.</span> <span class="nav-text">column attention</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OP-slot"><span class="nav-number">3.1.3.</span> <span class="nav-text">OP slot</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VALUE-slot"><span class="nav-number">3.1.4.</span> <span class="nav-text">VALUE slot</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQLova"><span class="nav-number">3.2.</span> <span class="nav-text">SQLova</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#X-SQL"><span class="nav-number">3.3.</span> <span class="nav-text">X-SQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#苏剑林老师基于BERT的baseline"><span class="nav-number">3.4.</span> <span class="nav-text">苏剑林老师基于BERT的baseline</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评价标准"><span class="nav-number">4.</span> <span class="nav-text">评价标准</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他相似任务"><span class="nav-number">5.</span> <span class="nav-text">其他相似任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#竞赛题目"><span class="nav-number">1.</span> <span class="nav-text">竞赛题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据模型"><span class="nav-number">2.</span> <span class="nav-text">数据模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#baseline"><span class="nav-number">3.</span> <span class="nav-text">baseline</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SQLNet"><span class="nav-number">3.1.</span> <span class="nav-text">SQLNet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sequence-to-set"><span class="nav-number">3.1.1.</span> <span class="nav-text">sequence to set</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#column-attention"><span class="nav-number">3.1.2.</span> <span class="nav-text">column attention</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OP-slot"><span class="nav-number">3.1.3.</span> <span class="nav-text">OP slot</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VALUE-slot"><span class="nav-number">3.1.4.</span> <span class="nav-text">VALUE slot.</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQLova"><span class="nav-number">3.2.</span> <span class="nav-text">SQLova</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#X-SQL"><span class="nav-number">3.3.</span> <span class="nav-text">X-SQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#苏剑林老师基于BERT的baseline"><span class="nav-number">3.4.</span> <span class="nav-text">苏剑林老师基于BERT的baseline</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评价标准"><span class="nav-number">4.</span> <span class="nav-text">评价标准</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他相似任务"><span class="nav-number">5.</span> <span class="nav-text">其他相似任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -811,7 +846,7 @@ A c c_{e x}=\frac{1}{N} \sum_{n=1}^{N} S c o r e_{e x}^{n}</script><p>最后线�
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">15k</span>
+    <span title="站点总字数">24k</span>
   
 
   
@@ -822,7 +857,7 @@ A c c_{e x}=\frac{1}{N} \sum_{n=1}^{N} S c o r e_{e x}^{n}</script><p>最后线�
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">14 分钟</span>
+    <span title="站点阅读时长">21 分钟</span>
   
 </div>
 
