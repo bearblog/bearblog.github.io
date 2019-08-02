@@ -106,11 +106,14 @@
 <meta property="og:image" content="http://i.loli.net/2019/05/03/5ccc41f42ddd1.png">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/1EEA06B143E5443E8DD91BCEA112909C?method=download&shareKey=8c0244d2aaefd0e6ce47ed63ba0d2f6e">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/AF7DF320CCB34CD2AABD89FA63D475DC?method=download&shareKey=179e904a83f1b9edaf3e5f051e8bf138">
+<meta property="og:image" content="https://image.jiqizhixin.com/uploads/editor/c3f55b60-a69c-451f-9174-5ff3fcc21f19/640.png">
+<meta property="og:image" content="https://image.jiqizhixin.com/uploads/editor/0d282707-fd07-40e8-81c1-70f18e847f6b/640.png">
+<meta property="og:image" content="https://image.jiqizhixin.com/uploads/editor/6fd13b7b-b5ff-4024-b300-2c620fef718c/640.png">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d83d4989ly1g2e5cyb517j20u00gjakz.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d83d4989ly1g2e5j0uw8lj20u00b5goq.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d83d4989ly1g2e5v3nmltj20sv0eyth9.jpg">
 <meta property="og:image" content="https://pic1.zhimg.com/v2-f22e216a969ff93bec51fa05d610c35c_b.gif">
-<meta property="og:updated_time" content="2019-07-08T07:48:38.543Z">
+<meta property="og:updated_time" content="2019-07-21T10:03:58.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NLP文本表示预训练技术">
 <meta name="twitter:description" content="NLP里程碑    时间 事件     2001 Neural Language Model   2008 Multi-task learning   2013 Word Embedding / NN for NLP   2014 Sequence to Sequence   2015 Attention   2016 Memory Network   2018 Pretrained Langua">
@@ -405,7 +408,7 @@
                 
               
 
-              <time title="创建时间：2019-05-04 11:43:30" itemprop="dateCreated datePublished" datetime="2019-05-04T11:43:30+08:00">2019-05-04</time>
+              <time title="创建时间：2019-07-19 17:44:43" itemprop="dateCreated datePublished" datetime="2019-07-19T17:44:43+08:00">2019-07-19</time>
             
 
             
@@ -422,7 +425,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-08 15:48:38" itemprop="dateModified" datetime="2019-07-08T15:48:38+08:00">2019-07-08</time>
+                <time title="修改时间：2019-07-21 18:03:58" itemprop="dateModified" datetime="2019-07-21T18:03:58+08:00">2019-07-21</time>
               
             
           </span>
@@ -475,7 +478,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">18k</span>
+                <span title="本文字数">19k</span>
               
 
               
@@ -489,7 +492,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">16 分钟</span>
+                <span title="阅读时长">17 分钟</span>
               
             </div>
           
@@ -559,7 +562,7 @@
 </li>
 </ul>
 <h1 id="语言模型"><a href="#语言模型" class="headerlink" title="语言模型"></a>语言模型</h1><p>语言模型是对一段文本的概率进行估计即针对文本$X$，计算$P(X)$的概率，语言模型分为<code>统计语言模型</code>和<code>神经网络语言模型</code>。</p>
-<h2 id="统计语言模型-n-gram模型"><a href="#统计语言模型-n-gram模型" class="headerlink" title="统计语言模型/n-gram模型"></a>统计语言模型/n-gram模型</h2><p>语言模型的本质是对一段自然语言的文本进行预测概率的大小，即如果文本用 $X$ 来表示，那么语言模型就是要求 <script type="math/tex">P(X_i)</script>的大小。通俗的来讲，最后得到的概率越大说明越合理，概率越小越不合理（不是人话）。按照大数定律中频率对于概率无限逼近的思想，通过计算这个文本在所有人类历史上产生过的所有文本集合中的频率 $P(X_i)$ ，公式如下：</p>
+<h2 id="统计语言模型-n-gram模型"><a href="#统计语言模型-n-gram模型" class="headerlink" title="统计语言模型/n-gram模型"></a>统计语言模型/n-gram模型</h2><p>语言模型的本质是对一段文本(词序列)进行预测概率的分布，即如果文本用 $X$ 来表示，那么语言模型就是要求 <script type="math/tex">P(X_i)</script>的大小。通俗的来讲，最后得到的概率越大说明越合理，概率越小越不合理（不是人话）。按照大数定律中频率对于概率无限逼近的思想，通过计算这个文本在所有人类历史上产生过的所有文本集合中的频率 $P(X_i)$ ，公式如下：</p>
 <script type="math/tex; mode=display">
 P(X_i)=\frac{c(X_i)}{\sum_{i=0}^{\infty} c(X_i)}</script><p>该公式的问题是全人类所有历史语料的这种统计显然无法实现。因此我们将文本拆成词，通过词之间的概率关系，求得整个文本的概率大小。假定句子长度为T，词用x表示，即：</p>
 <script type="math/tex; mode=display">
@@ -576,14 +579,17 @@ P(X) = P(x_0, x_1,...,x_T)=P(x_0)P(x_1|x_0)P(x_2|x_1)...P(x_T|x_{T-1})=P(x_0)\pr
 <p><img src="https://note.youdao.com/yws/api/personal/file/1EEA06B143E5443E8DD91BCEA112909C?method=download&amp;shareKey=8c0244d2aaefd0e6ce47ed63ba0d2f6e" alt="nnlm"></p>
 <p>NNLM的主要贡献是将模型的第一次层特征映射矩阵当作词的分布式表示，从而可以将一个词表示为一个向量形式。这直接启发了<strong>word2vec</strong>的工作。</p>
 <p><strong>NNLM的问题：</strong> NNLM虽然将N-Gram的阶数n提高到了5，相比原来的统计语言模型进步很大，但这个级别的长程依赖关系仍不够。而且NNLM只对词的左侧文本进行建模，所以得到的词向量并不是语境的充分表征。还有一个比较严重的问题就是NNLM的训练太慢。</p>
-<h1 id="自然语言预训练技术"><a href="#自然语言预训练技术" class="headerlink" title="自然语言预训练技术"></a>自然语言预训练技术</h1><h2 id="文本表示有哪些方法"><a href="#文本表示有哪些方法" class="headerlink" title="文本表示有哪些方法"></a>文本表示有哪些方法</h2><ol>
+<h1 id="自然语言预训练技术"><a href="#自然语言预训练技术" class="headerlink" title="自然语言预训练技术"></a>自然语言预训练技术</h1><h2 id="文本表示"><a href="#文本表示" class="headerlink" title="文本表示"></a>文本表示</h2><p><strong>文本表示的方法</strong></p>
+<ol>
 <li>基于one-hot、tfidf、textrank等的bag-of-words;</li>
 <li>主题模型：LSA、pLSA、LDA;</li>
 <li>基于词向量的静态表示：word2vec、fastText、glove;</li>
 <li>基于词向量的动态表示：elmo、gpt、bert</li>
 </ol>
-<p>One-hot表示会产生维数灾难和语义鸿沟。</p>
-<p>NLP任务可以分成两个部分：预训练产生词向量和对词向量操作（下游具体NLP任务）</p>
+<p><strong>语言表征学习</strong></p>
+<p>nlp在深度学习的基本单元是向量$\{x_1, x_2, …, x_n\}$，然后通过变换、整合得到新的<strong>向量h</strong>——<strong>表征（Representation）</strong>，再基于向量h得到对输出的判断y。</p>
+<p><strong>分布式语义假设（Distributional Hypothesis）</strong></p>
+<p>One shall know a word by the company it keeps.</p>
 <h2 id="Word2vec"><a href="#Word2vec" class="headerlink" title="Word2vec"></a>Word2vec</h2><p>2013年，Tomas Mikolov连放几篇划时代的论文，其中最为重要的是两篇：<a href="https://arxiv.org/abs/1301.3781" target="_blank" rel="noopener">Efficient Estimation of Word Representations in Vector Space</a>（一文首次提出CBOW和Skip-gram模型）和<a href="https://arxiv.org/abs/1310.4546" target="_blank" rel="noopener">Distributed Representations of Words and Phrases and their Compositionality</a>(文中介绍了几种优化训练方法，包括Hierarchical Softmax)。<strong>鼎鼎有名的word2vec只是一个工具</strong>，背后的模型是CBOW和Skip-gram，并且使用了Hierarchical Softmax或Negative Sampling这些训练的优化方法。</p>
 <h3 id="CBOW"><a href="#CBOW" class="headerlink" title="CBOW"></a>CBOW</h3><p>CBOW的全称是Continuous Bag-of-words，也就是连续的词袋模型，其目标函数如下：</p>
 <p>首先，CBOW没有隐藏层，本质上只有两层结构。从这可以看出，CBOW有三个特点：第一，取消了NNLM中的隐藏层，直接将输入层和输出层相连；第二，在求语境context向量时，语境内的词序已经丢失；第三，因为最终的目标函数仍然是语言模型的目标函数，所以需要顺序遍历预料中的每一个词。</p>
@@ -599,8 +605,17 @@ P(X) = P(x_0, x_1,...,x_T)=P(x_0)P(x_1|x_0)P(x_2|x_1)...P(x_T|x_{T-1})=P(x_0)\pr
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort classes<span class="selector-class">.txt</span> -k <span class="number">2</span> -n &gt; classes<span class="selector-class">.sorted</span><span class="selector-class">.txt</span></span><br></pre></td></tr></table></figure>
 <h2 id="Glove"><a href="#Glove" class="headerlink" title="Glove"></a>Glove</h2><p>Glove是一种用于获取单词向量表征的无监督学习算法。</p>
 <p>目前将预训练语言表征应用于下游任务存在两种策略：基于<strong>特征的策略</strong>和<strong>微调的策略（fine-tuning）</strong>。基于特征的策略（如ELMo）使用将预训练的表征作为额外特征。而微调策略（GPT），通过简单地微调预训练参数在下游任务中进行训练。</p>
+<h2 id="CoVe"><a href="#CoVe" class="headerlink" title="CoVe"></a>CoVe</h2><p><img src="https://image.jiqizhixin.com/uploads/editor/c3f55b60-a69c-451f-9174-5ff3fcc21f19/640.png" alt="img"></p>
 <h2 id="ELMo"><a href="#ELMo" class="headerlink" title="ELMo"></a>ELMo</h2><p>2018年的早些时候吧，AllenNLP的Matthew E. Peters 等人在论文Deep contextualized word representations中首次提出<strong>ELMo</strong>，它的全称是Embeddings from Language Models。与word2vec或GLoVe等传统词嵌入不同，ELMo中每个词对应的向量实际上是一个包含该词的整个个句子的函数。</p>
-<h2 id="GPT"><a href="#GPT" class="headerlink" title="GPT"></a>GPT</h2><h2 id="BERT"><a href="#BERT" class="headerlink" title="BERT"></a>BERT</h2><p>BERT是一种预训练语言表示的方法，这意味着我们在大型文本语料库（如维基百科）上训练通用的“语言理解”模型，然后将该模型用于我们关心的下游NLP任务（如问答）。 BERT优于以前的方法，因为它是第一个用于预训练NLP的无监督，深度双向系统。</p>
+<p>ELMo的使用过程分为以下三个步骤：</p>
+<p><img src="https://image.jiqizhixin.com/uploads/editor/0d282707-fd07-40e8-81c1-70f18e847f6b/640.png" alt="img"></p>
+<ol>
+<li>预训练，ELMo利用2层的biLSTM和无监督数据训练两个单向的语言模型，统称为biLM；</li>
+<li>利用特定任务的数据精调第一步的biLM;</li>
+<li>训练特定的任务模型，任务模型的输入是上面已训练的biLM的各层状态向量的组合向量。</li>
+</ol>
+<h2 id="GPT"><a href="#GPT" class="headerlink" title="GPT"></a>GPT</h2><p><img src="https://image.jiqizhixin.com/uploads/editor/6fd13b7b-b5ff-4024-b300-2c620fef718c/640.png" alt="img"></p>
+<h2 id="BERT"><a href="#BERT" class="headerlink" title="BERT"></a>BERT</h2><p>BERT是一种预训练语言表示的方法，这意味着我们在大型文本语料库（如维基百科）上训练通用的“语言理解”模型，然后将该模型用于我们关心的下游NLP任务（如问答）。 BERT优于以前的方法，因为它是第一个用于预训练NLP的无监督，深度双向系统。</p>
 <p><img src="http://ww1.sinaimg.cn/large/d83d4989ly1g2e5cyb517j20u00gjakz.jpg" alt></p>
 <p>BERT联合<code>遮蔽语言模型（masked language model, MLM）</code>和<code>下一句预测（next sentence prediction）</code>两个任务联合预训练文本的表征。</p>
 <h3 id="任务1：Masked-LM"><a href="#任务1：Masked-LM" class="headerlink" title="任务1：Masked LM"></a>任务1：Masked LM</h3><p>为了训练深度双向表征，BERT模型采取了一个直接的方法，随机遮蔽输入token的某些部分，然后预测被遮住的token。该步骤在文献中通常被称为Cloze任务（Taylor, 1953）。在这种情况下，对应遮蔽的token的最终隐藏向量会输入到softmax函数中，并如标准的LM那样预测所有词汇的概率。在实验中，随机遮住每个序列15%的token。与去噪自编码器（Vincent et al., 2008）相反，我们仅预测遮蔽单词而非重建整个输入。</p>
@@ -630,7 +645,7 @@ P(X) = P(x_0, x_1,...,x_T)=P(x_0)P(x_1|x_0)P(x_2|x_1)...P(x_T|x_{T-1})=P(x_0)\pr
 <figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># 加载模型 pre-trained model (weights)</span></span><br><span class="line">model = BertModel.from_pretrained(<span class="string">'bert-base-uncased'</span>)</span><br><span class="line">model.<span class="built_in">eval</span>()</span><br><span class="line"> </span><br><span class="line"><span class="meta"># GPU &amp; put everything on cuda</span></span><br><span class="line">tokens_tensor = tokens_tensor.<span class="keyword">to</span>(<span class="string">'cuda'</span>)</span><br><span class="line">segments_tensors = segments_tensors.<span class="keyword">to</span>(<span class="string">'cuda'</span>)</span><br><span class="line">model.<span class="keyword">to</span>(<span class="string">'cuda'</span>)</span><br><span class="line"> </span><br><span class="line"><span class="meta"># 得到每一层的 hidden states </span></span><br><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">    encoded_layers, _ = model(tokens_tensor, segments_tensors)</span><br><span class="line"><span class="meta"># 模型 bert-base-uncased 有12层，所以 hidden states 也有12层</span></span><br><span class="line">assert len(encoded_layers) == <span class="number">12</span></span><br></pre></td></tr></table></figure>
 <p><strong>两行代码玩转Google句向量和词向量</strong></p>
 <p><img src="https://pic1.zhimg.com/v2-f22e216a969ff93bec51fa05d610c35c_b.gif" alt="mark"></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&amp;mid=2247493520&amp;idx=1&amp;sn=2b04c009ef75291ef3d19e8fe673aa36&amp;chksm=96ea3810a19db10621e7a661974c796e8adeffc31625a769f8db1d87ba803cd58a30d40ad7ce&amp;scene=0&amp;xtrack=1#rd" target="_blank" rel="noopener">深度长文：NLP的巨人肩膀（上）</a></p>
+<h2 id="XLNet"><a href="#XLNet" class="headerlink" title="XLNet"></a>XLNet</h2><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&amp;mid=2247493520&amp;idx=1&amp;sn=2b04c009ef75291ef3d19e8fe673aa36&amp;chksm=96ea3810a19db10621e7a661974c796e8adeffc31625a769f8db1d87ba803cd58a30d40ad7ce&amp;scene=0&amp;xtrack=1#rd" target="_blank" rel="noopener">深度长文：NLP的巨人肩膀（上）</a></p>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&amp;mid=2247493731&amp;idx=1&amp;sn=51206e4ca3983548436d889590ab5347&amp;chksm=96ea37e3a19dbef5b6db3143eb9df822915126d3d8f61fe73ddb9f8fa329d568ec79a662acb1&amp;scene=0&amp;xtrack=1#rd" target="_blank" rel="noopener">NLP 的巨人肩膀（下）：从 CoVe 到 BERT</a></p>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MzU1NTUxNTM0Mg==&amp;mid=2247489766&amp;idx=1&amp;sn=7b8f822bbbb341bd9c241243a270f994&amp;chksm=fbd27447cca5fd51bcc6763d88af7f86707bf2aeb3a6a8f06c6e592927b3a4ebac5715472dbe&amp;mpshare=1&amp;scene=1&amp;srcid=#rd" target="_blank" rel="noopener">从Word Embedding到Bert模型——自然语言处理预训练技术发展史</a></p>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MzI3MTA0MTk1MA==&amp;mid=2652033813&amp;idx=3&amp;sn=ba5712022bca369e2fd8542fececaa57&amp;chksm=f121a7e4c6562ef24383c563bce4bb8b14dc38c03bfe38fff64e1136eb2f6dc4ef230e2d1c00&amp;mpshare=1&amp;scene=1&amp;srcid=12147MftTWLeas3WahcyLXwm#rd" target="_blank" rel="noopener">图解2018年领先的两大NLP模型：BERT和ELMo</a></p>
@@ -640,6 +655,8 @@ P(X) = P(x_0, x_1,...,x_T)=P(x_0)P(x_1|x_0)P(x_2|x_1)...P(x_T|x_{T-1})=P(x_0)\pr
 <p><a href="https://blog.csdn.net/ccbrid/article/details/88732857" target="_blank" rel="noopener">Pytorch版本的BERT使用学习笔记</a></p>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MzUyOTU2MjE1OA==&amp;mid=2247484863&amp;idx=1&amp;sn=fcb7e5b810cc34ac0035bc88b797eeaf&amp;chksm=fa5e6afecd29e3e8caf0b6381b2694da27122b1fbc062f67f4ee32cb19fe12ac50dd81c7ecca&amp;token=1724747136&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">干货|全面理解N-Gram语言模型</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/50582974" target="_blank" rel="noopener">两行代码代码玩转Google BERT局向量词向量</a></p>
+<p><a href="https://www.jiqizhixin.com/articles/2019-06-27-18" target="_blank" rel="noopener">BERT时代与后时代的NLP（二）</a></p>
+<p><a href="https://www.jiqizhixin.com/articles/2019-06-29-3" target="_blank" rel="noopener">拆解XLNet模型设计，回顾语言表征学习的思想演进</a></p>
 
       
     </div>
@@ -694,8 +711,8 @@ P(X) = P(x_0, x_1,...,x_T)=P(x_0)P(x_1|x_0)P(x_2|x_1)...P(x_T|x_{T-1})=P(x_0)\pr
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/中文NLSQL挑战赛/" rel="next" title="天池——中文NLSQL挑战赛">
+                <i class="fa fa-chevron-left"></i> 天池——中文NLSQL挑战赛
               </a>
             
           </div>
@@ -704,8 +721,8 @@ P(X) = P(x_0, x_1,...,x_T)=P(x_0)P(x_1|x_0)P(x_2|x_1)...P(x_T|x_{T-1})=P(x_0)\pr
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/知识驱动对话/" rel="prev" title="知识驱动的对话生成">
-                知识驱动的对话生成 <i class="fa fa-chevron-right"></i>
+              <a href="/DeeCamp-2019：Day-1/" rel="prev" title="DeeCamp 2019：Day 1">
+                DeeCamp 2019：Day 1 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -777,7 +794,7 @@ P(X) = P(x_0, x_1,...,x_T)=P(x_0)P(x_1|x_0)P(x_2|x_1)...P(x_T|x_{T-1})=P(x_0)\pr
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -798,7 +815,9 @@ P(X) = P(x_0, x_1,...,x_T)=P(x_0)P(x_1|x_0)P(x_2|x_1)...P(x_T|x_{T-1})=P(x_0)\pr
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -889,7 +908,7 @@ P(X) = P(x_0, x_1,...,x_T)=P(x_0)P(x_1|x_0)P(x_2|x_1)...P(x_T|x_{T-1})=P(x_0)\pr
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NLP里程碑"><span class="nav-number">1.</span> <span class="nav-text">NLP里程碑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#语言模型"><span class="nav-number">2.</span> <span class="nav-text">语言模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#统计语言模型-n-gram模型"><span class="nav-number">2.1.</span> <span class="nav-text">统计语言模型/n-gram模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络语言模型（NNLM）"><span class="nav-number">2.2.</span> <span class="nav-text">神经网络语言模型（NNLM）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自然语言预训练技术"><span class="nav-number">3.</span> <span class="nav-text">自然语言预训练技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本表示有哪些方法"><span class="nav-number">3.1.</span> <span class="nav-text">文本表示有哪些方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Word2vec"><span class="nav-number">3.2.</span> <span class="nav-text">Word2vec</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CBOW"><span class="nav-number">3.2.1.</span> <span class="nav-text">CBOW</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Skip-gram"><span class="nav-number">3.2.2.</span> <span class="nav-text">Skip-gram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#word2vec工具的使用"><span class="nav-number">3.2.3.</span> <span class="nav-text">word2vec工具的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Glove"><span class="nav-number">3.3.</span> <span class="nav-text">Glove</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ELMo"><span class="nav-number">3.4.</span> <span class="nav-text">ELMo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GPT"><span class="nav-number">3.5.</span> <span class="nav-text">GPT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BERT"><span class="nav-number">3.6.</span> <span class="nav-text">BERT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#任务1：Masked-LM"><span class="nav-number">3.6.1.</span> <span class="nav-text">任务1：Masked LM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务2：下一句预测"><span class="nav-number">3.6.2.</span> <span class="nav-text">任务2：下一句预测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用BERT"><span class="nav-number">3.6.3.</span> <span class="nav-text">如何使用BERT</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NLP里程碑"><span class="nav-number">1.</span> <span class="nav-text">NLP里程碑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#语言模型"><span class="nav-number">2.</span> <span class="nav-text">语言模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#统计语言模型-n-gram模型"><span class="nav-number">2.1.</span> <span class="nav-text">统计语言模型/n-gram模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络语言模型（NNLM）"><span class="nav-number">2.2.</span> <span class="nav-text">神经网络语言模型（NNLM）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自然语言预训练技术"><span class="nav-number">3.</span> <span class="nav-text">自然语言预训练技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本表示"><span class="nav-number">3.1.</span> <span class="nav-text">文本表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Word2vec"><span class="nav-number">3.2.</span> <span class="nav-text">Word2vec</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CBOW"><span class="nav-number">3.2.1.</span> <span class="nav-text">CBOW</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Skip-gram"><span class="nav-number">3.2.2.</span> <span class="nav-text">Skip-gram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#word2vec工具的使用"><span class="nav-number">3.2.3.</span> <span class="nav-text">word2vec工具的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Glove"><span class="nav-number">3.3.</span> <span class="nav-text">Glove</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CoVe"><span class="nav-number">3.4.</span> <span class="nav-text">CoVe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ELMo"><span class="nav-number">3.5.</span> <span class="nav-text">ELMo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GPT"><span class="nav-number">3.6.</span> <span class="nav-text">GPT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BERT"><span class="nav-number">3.7.</span> <span class="nav-text">BERT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#任务1：Masked-LM"><span class="nav-number">3.7.1.</span> <span class="nav-text">任务1：Masked LM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务2：下一句预测"><span class="nav-number">3.7.2.</span> <span class="nav-text">任务2：下一句预测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用BERT"><span class="nav-number">3.7.3.</span> <span class="nav-text">如何使用BERT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XLNet"><span class="nav-number">3.8.</span> <span class="nav-text">XLNet</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -924,7 +943,7 @@ P(X) = P(x_0, x_1,...,x_T)=P(x_0)P(x_1|x_0)P(x_2|x_1)...P(x_T|x_{T-1})=P(x_0)\pr
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">24k</span>
+    <span title="站点总字数">29k</span>
   
 
   
@@ -935,7 +954,7 @@ P(X) = P(x_0, x_1,...,x_T)=P(x_0)P(x_1|x_0)P(x_2|x_1)...P(x_T|x_{T-1})=P(x_0)\pr
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">21 分钟</span>
+    <span title="站点阅读时长">26 分钟</span>
   
 </div>
 
