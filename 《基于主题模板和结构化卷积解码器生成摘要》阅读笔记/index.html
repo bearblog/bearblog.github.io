@@ -96,24 +96,26 @@
 
 
 
-  <meta name="description" content="设计思想如何评价小冰Open Domain Social Long-term Dialogue System的性能？ 单次对话论述 Conversation-turns Per Session(CPS)作为评估社交聊天机器人成功的指标。CPS越大，社交聊天机器人的对话参与能力就越好。第六代小冰的CPS已经从第一代的5提升到23。 IQ+EQ+Personality 社交聊天机器人需要足够高的智商">
-<meta name="keywords" content="dialogue system">
+  <meta name="description" content="来源：ACL 2019 原文链接：https://www.aclweb.org/anthology/P19-1504 代码链接：https://github.com/lauhaide/WikiCatSum   Introduction本文基于假设——“将内容结构考虑在内的解码器会使摘要生成的结果更好，同时也会减少通用回复的问题”， 进行了以下研究。虽然文中多次提到多文档摘要，但并不是处理真正意义">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小冰架构学习">
-<meta property="og:url" content="http://www.sherlocknlp.com/小冰架构学习/index.html">
+<meta property="og:title" content="《基于主题模板和结构化卷积解码器生成摘要》阅读笔记">
+<meta property="og:url" content="http://www.sherlocknlp.com/《基于主题模板和结构化卷积解码器生成摘要》阅读笔记/index.html">
 <meta property="og:site_name" content="Sherlockの小酒馆">
-<meta property="og:description" content="设计思想如何评价小冰Open Domain Social Long-term Dialogue System的性能？ 单次对话论述 Conversation-turns Per Session(CPS)作为评估社交聊天机器人成功的指标。CPS越大，社交聊天机器人的对话参与能力就越好。第六代小冰的CPS已经从第一代的5提升到23。 IQ+EQ+Personality 社交聊天机器人需要足够高的智商">
+<meta property="og:description" content="来源：ACL 2019 原文链接：https://www.aclweb.org/anthology/P19-1504 代码链接：https://github.com/lauhaide/WikiCatSum   Introduction本文基于假设——“将内容结构考虑在内的解码器会使摘要生成的结果更好，同时也会减少通用回复的问题”， 进行了以下研究。虽然文中多次提到多文档摘要，但并不是处理真正意义">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/104214/1546396005189-1beef810-d825-4ea8-8597-3806892e92d4.png">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/104214/1546398672251-b8e722bc-4c4f-4a68-b363-c5f85ec5269a.png">
-<meta property="og:image" content="http://image.sherlocknlp.com/image/20190627/LYBy1QUaoGK4.png">
-<meta property="og:image" content="http://image.sherlocknlp.com/image/20190705/GUwP0hormQJr.png">
-<meta property="og:image" content="http://image.sherlocknlp.com/image/20190627/ssSoBWfXdGoo.png">
-<meta property="og:updated_time" content="2019-07-05T09:16:57.000Z">
+<meta property="og:image" content="http://image.sherlocknlp.com/image/20190914/m2FdYXMbjJep.png">
+<meta property="og:image" content="http://image.sherlocknlp.com/image/20190914/8lYE59PakSeE.png">
+<meta property="og:image" content="http://image.sherlocknlp.com/image/20190914/MzYKxEW3Ydmn.png">
+<meta property="og:image" content="http://image.sherlocknlp.com/image/20190914/SSc32OzKIrEy.png">
+<meta property="og:image" content="http://image.sherlocknlp.com/image/20190914/oIh3aVW4wevv.png">
+<meta property="og:image" content="http://image.sherlocknlp.com/image/20190914/K8TATIwLLkCa.png">
+<meta property="og:image" content="http://image.sherlocknlp.com/image/20190914/l7QbioMG5vGN.png">
+<meta property="og:image" content="http://image.sherlocknlp.com/image/20190914/j5YhR5mq7AGB.png">
+<meta property="og:updated_time" content="2019-09-15T04:55:33.227Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小冰架构学习">
-<meta name="twitter:description" content="设计思想如何评价小冰Open Domain Social Long-term Dialogue System的性能？ 单次对话论述 Conversation-turns Per Session(CPS)作为评估社交聊天机器人成功的指标。CPS越大，社交聊天机器人的对话参与能力就越好。第六代小冰的CPS已经从第一代的5提升到23。 IQ+EQ+Personality 社交聊天机器人需要足够高的智商">
-<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/png/104214/1546396005189-1beef810-d825-4ea8-8597-3806892e92d4.png">
+<meta name="twitter:title" content="《基于主题模板和结构化卷积解码器生成摘要》阅读笔记">
+<meta name="twitter:description" content="来源：ACL 2019 原文链接：https://www.aclweb.org/anthology/P19-1504 代码链接：https://github.com/lauhaide/WikiCatSum   Introduction本文基于假设——“将内容结构考虑在内的解码器会使摘要生成的结果更好，同时也会减少通用回复的问题”， 进行了以下研究。虽然文中多次提到多文档摘要，但并不是处理真正意义">
+<meta name="twitter:image" content="http://image.sherlocknlp.com/image/20190914/m2FdYXMbjJep.png">
 
 
 
@@ -123,7 +125,7 @@
 
   
   
-  <link rel="canonical" href="http://www.sherlocknlp.com/小冰架构学习/">
+  <link rel="canonical" href="http://www.sherlocknlp.com/《基于主题模板和结构化卷积解码器生成摘要》阅读笔记/">
 
 
 
@@ -133,7 +135,7 @@
   };
 </script>
 
-  <title>小冰架构学习 | Sherlockの小酒馆</title>
+  <title>《基于主题模板和结构化卷积解码器生成摘要》阅读笔记 | Sherlockの小酒馆</title>
   
 
 
@@ -361,7 +363,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.sherlocknlp.com/小冰架构学习/">
+    <link itemprop="mainEntityOfPage" href="http://www.sherlocknlp.com/《基于主题模板和结构化卷积解码器生成摘要》阅读笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sherlock">
@@ -378,7 +380,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">小冰架构学习
+          <h2 class="post-title" itemprop="name headline">《基于主题模板和结构化卷积解码器生成摘要》阅读笔记
 
               
             
@@ -404,7 +406,7 @@
                 
               
 
-              <time title="创建时间：2019-07-05 17:19:56 / 修改时间：17:16:57" itemprop="dateCreated datePublished" datetime="2019-07-05T17:19:56+08:00">2019-07-05</time>
+              <time title="创建时间：2019-09-15 12:52:20 / 修改时间：12:55:33" itemprop="dateCreated datePublished" datetime="2019-09-15T12:52:20+08:00">2019-09-15</time>
             
 
             
@@ -462,7 +464,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.7k</span>
+                <span title="本文字数">5.7k</span>
               
 
               
@@ -476,7 +478,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">3 分钟</span>
+                <span title="阅读时长">5 分钟</span>
               
             </div>
           
@@ -496,52 +498,53 @@
       
 
       
-        <p><img src="https://cdn.nlark.com/yuque/0/2019/png/104214/1546396005189-1beef810-d825-4ea8-8597-3806892e92d4.png" alt></p>
-<h2 id="设计思想"><a href="#设计思想" class="headerlink" title="设计思想"></a>设计思想</h2><p><strong>如何评价小冰Open Domain Social Long-term Dialogue System的性能？</strong></p>
-<p>单次对话论述 Conversation-turns Per Session(CPS)作为评估社交聊天机器人成功的指标。CPS越大，社交聊天机器人的对话参与能力就越好。第六代小冰的CPS已经从第一代的5提升到23。</p>
-<p><strong>IQ+EQ+Personality</strong></p>
-<p>社交聊天机器人需要足够高的智商（IQ）来学习多种技能，才能紧跟用户需求，帮助他们完成指定任务。同时，社交聊天机器人还需要足够高的情商（EQ），以满足用户情感的需求，比如情绪感受和社会归属感。</p>
-<ul>
-<li><strong>IQ：</strong>IQ能力包括知识和记忆建模、图像和自然语言理解、推理生成和预测。为了满足用户的特定需求以及帮助用户完成指定的任务，这些能力是不可或缺的。其中最重要且最复杂的技能是核心聊天（Core Chat），即与用户在多个主题上展开长时间和开放域的对话</li>
-<li><strong>EQ：</strong></li>
-<li><strong>Personality：</strong>符合小冰既有的风格</li>
-</ul>
-<p><strong>将社交聊天视为分层决策</strong></p>
-<p>对话可被视为有自然层级的决策过程：一个顶级过程管理者整体的对话并选取不同的技能来处理不同类型 的对话模式（比如闲聊、问答、订票）；低级过程则受所选择的技能控制。可选择基本动作（响应），从而生成对话段落或完成任务。</p>
-<h2 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h2><p><img src="https://cdn.nlark.com/yuque/0/2019/png/104214/1546398672251-b8e722bc-4c4f-4a68-b363-c5f85ec5269a.png" alt></p>
-<p>上图为小冰的整体架构，其包含三层：用户体验层、对话引擎层和数据层。</p>
-<h3 id="用户体验层"><a href="#用户体验层" class="headerlink" title="用户体验层"></a>用户体验层</h3><h3 id="对话引擎层"><a href="#对话引擎层" class="headerlink" title="对话引擎层"></a>对话引擎层</h3><p>对话引擎层中的四个主要组件：对话管理、共情计算、核心聊天和技能。</p>
-<h4 id="对话管理"><a href="#对话管理" class="headerlink" title="对话管理"></a>对话管理</h4><p>对话管理除了记录<strong>对话历史</strong>还要包括策略管理，即管理什么时候触发Skill什么时候切换。同时，Conversation还受到Topic的管理。在Pretrain的阶段得到Topic Index，当触发Topic切换的标志时，例如：</p>
-<ol>
-<li>Core Chat未能生成有效的候选集</li>
-<li>生成的响应知识用户输入的重复</li>
-<li>用户输入变得平淡</li>
-</ol>
-<p>则调用Topic切换，切换之后的Topic根据以下几个指标选取：</p>
-<ol>
-<li>上下文关联性</li>
-<li>新鲜度</li>
-<li>个人兴趣</li>
-<li>热度</li>
-<li>接受度</li>
-</ol>
-<h4 id="共情计算（Empathetic-Computing）"><a href="#共情计算（Empathetic-Computing）" class="headerlink" title="共情计算（Empathetic Computing）"></a>共情计算（Empathetic Computing）</h4><p>共情度计算是小冰相对独特的一点，它不是直接把Context和Reply进行匹配得到一个Match Score。而是由Query, Context, Reply及情景分析得到一个$s=\left(Q_{c}, C, e_{Q}, e_{R}\right)$向量，再由向量$s$计算出候选回复。</p>
-<p><strong>Contextual Query Understanding</strong></p>
-<p>本模块的主要任务是对Context进行补全，通过命名实体识别和指代消解的方法，对对话历史信息进行补全。</p>
-<p><strong>User Understand</strong></p>
-<p><strong>Interpersonal Response Generation</strong></p>
-<h4 id="核心聊天（Core-chat）"><a href="#核心聊天（Core-chat）" class="headerlink" title="核心聊天（Core chat）"></a>核心聊天（Core chat）</h4><p>核心聊天是小冰的<strong>智商</strong>和<strong>情商</strong>的重要组成部分。小冰在处理语言生成的时候使用两阶段法，先构造Reply候选集，然后通过计算每个Reply的得分（Score）选出最优答案。</p>
-<p><img src="http://image.sherlocknlp.com/image/20190627/LYBy1QUaoGK4.png" alt="mark"></p>
-<p><strong>Retrieval-Based Generator Using Paired Data</strong></p>
-<p><strong>Neural Generate Generator</strong></p>
-<p>单纯靠检索来获得数据，会漏掉一些新的热点，覆盖面不高。在小冰的架构中，对前面构造的向量$s$做sigmoid操作$v=\sigma\left(W_{Q}^{T} e_{Q}+W_{R}^{T} e_{R}\right)$，每一轮都喂到网络中这样保证了生成的Response带有小冰的<code>人格</code>。</p>
-<p><strong>Retrieval-Based Generator Using Unpaired Data</strong></p>
-<p><strong>Response Candidate Ranker</strong> </p>
-<p><img src="http://image.sherlocknlp.com/image/20190705/GUwP0hormQJr.png" alt="mark"></p>
-<h3 id="数据层"><a href="#数据层" class="headerlink" title="数据层"></a>数据层</h3><p><img src="http://image.sherlocknlp.com/image/20190627/ssSoBWfXdGoo.png" alt="mark"></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://wyydsb.xin/" target="_blank" rel="noopener">直男届的杀手-『小冰』架构解析</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/53667904" target="_blank" rel="noopener">沈向洋等人论文详解微软小冰，公开研发细节</a></p>
-<p><a href="https://arxiv.org/pdf/1812.08989.pdf" target="_blank" rel="noopener">The Design and Implementation of XiaoIce, an Empathetic Social Chatbot. Li Zhou et al. 18.12</a></p>
+        <blockquote>
+<p>来源：ACL 2019</p>
+<p>原文链接：<a href="https://www.aclweb.org/anthology/P19-1504" target="_blank" rel="noopener">https://www.aclweb.org/anthology/P19-1504</a></p>
+<p>代码链接：<a href="https://github.com/lauhaide/WikiCatSum" target="_blank" rel="noopener">https://github.com/lauhaide/WikiCatSum</a></p>
+</blockquote>
+<p><img src="http://image.sherlocknlp.com/image/20190914/m2FdYXMbjJep.png" alt="mark"></p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>本文基于假设——“将内容结构考虑在内的解码器会使摘要生成的结果更好，同时也会减少通用回复的问题”， 进行了以下研究。虽然文中多次提到多文档摘要，但并不是处理真正意义上的多文档摘要问题。</p>
+<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><p>本文模型仍然遵循传统的编码器-解码器架构，将输入文本编码成隐向量后从中解码出最终的摘要文本。模型的总体架构如下：</p>
+<p><img src="http://image.sherlocknlp.com/image/20190914/8lYE59PakSeE.png" alt="mark"></p>
+<h3 id="CNN-Encoder"><a href="#CNN-Encoder" class="headerlink" title="CNN Encoder"></a>CNN Encoder</h3><p>该模型在使用CNN [Gehring et al., 2017] 将输入文本编码，(作者说这里使用CNN来进行编码的原因是1）有利于并行训练；2）在生成式摘要任务上表现优秀。但后面解码时用的是LSTM，因此并行的效果有待考证)</p>
+<p><img src="http://image.sherlocknlp.com/image/20190914/MzYKxEW3Ydmn.png" alt="mark"></p>
+<h3 id="Hierarchical-Convolutional-Decoder"><a href="#Hierarchical-Convolutional-Decoder" class="headerlink" title="Hierarchical Convolutional Decoder"></a>Hierarchical Convolutional Decoder</h3><p>预测输出$y_{ti}$是通过卷积网络最顶层的输出$P\left(y_{t i} | y_{t\{1 : i-1\}}\right)=\operatorname{softmax}\left(W_{y}\left(\mathbf{o}_{t i}^{L}+\mathbf{c}_{t i}^{L}\right)\right)$。决定的该模型通过优化负对数似然$\mathcal{L}_{N L L}$来进行训练</p>
+<p><img src="http://image.sherlocknlp.com/image/20190914/SSc32OzKIrEy.png" alt="mark"></p>
+<h4 id="Document-level-Decoder"><a href="#Document-level-Decoder" class="headerlink" title="Document-level Decoder"></a>Document-level Decoder</h4><p>在该层会解码出句子表示序列$\left(\mathbf{s}_{1}, \cdots, \mathbf{s}_{|\mathcal{S}|}\right)$。</p>
+<p>$\mathbf{h}_{t}=\mathrm{LSTM}\left(\mathbf{h}_{t-1}, \mathbf{s}_{t-1}\right)$</p>
+<p>$\mathbf{s}_{t}=\tanh \left(\mathbf{W}_{s}\left[\mathbf{h}_{t} ; \mathbf{c}_{t}^{s}\right]\right)$</p>
+<p>这里使用了soft attention [Luong et al., 2015] 的机制，</p>
+<p>$\alpha_{t j}^{s}=\frac{\exp \left(\mathbf{h}_{t} \cdot \mathbf{z}_{j}\right)}{\sum_{j^{\prime}} \exp \left(\mathbf{h}_{t} \cdot \mathbf{z}_{j^{\prime}}\right)}$</p>
+<p>$\mathbf{c}_{t}^{s}=\sum_{j=1}^{|\mathcal{X}|} \alpha_{t j}^{s} \mathbf{z}_{j}$</p>
+<h4 id="Sentence-level-Decoder"><a href="#Sentence-level-Decoder" class="headerlink" title="Sentence-level Decoder"></a>Sentence-level Decoder</h4><p>在该部分，作者定义了target摘要句的词表示由 a）词嵌入；b）句内位置向量；c）句子位置向量，三部分组成。</p>
+<p>$\mathbf{g}_{t i}=\operatorname{emb}\left(y_{t i}\right)+\mathbf{e}_{i}+\mathbf{e}_{t}$</p>
+<p>每个摘要句子$s_{t}=\left(y_{t 1}, \dots, y_{t\left|s_{t}\right|}\right)$都是由sentence-level decoder生成的。</p>
+<script type="math/tex; mode=display">
+\left\{\mathbf{o}_{t 1}^{l}, \cdots, \mathbf{o}_{t n}^{l}\right\}=\operatorname{conv}\left(\left\{\mathbf{o}_{t 1}^{\prime l-1}, \cdots, \mathbf{o}_{t n}^{\prime l-1}\right)\right.</script><script type="math/tex; mode=display">
+\mathbf{o}_{t i}^{\prime l}=\mathbf{o}_{t i}^{l}+\mathbf{s}_{t}+\mathbf{c}_{t i}^{l}</script><script type="math/tex; mode=display">
+\mathbf{d}_{t i}^{l}=W_{d}^{l}\left(\mathbf{o}_{t i}^{l}+\mathbf{s}_{t}\right)+\mathbf{g}_{t i}</script><script type="math/tex; mode=display">
+a_{t i j}^{l}=\frac{\exp \left(\mathbf{d}_{t i}^{l} \cdot \mathbf{z}_{j}\right)}{\sum_{j^{\prime}} \exp \left(\mathbf{d}_{t i}^{l} \cdot \mathbf{z}_{j^{\prime}}\right)}</script><script type="math/tex; mode=display">
+\mathbf{c}_{t i}^{l}=\sum_{j=1}^{|\mathcal{X}|} a_{t i j}^{l}\left(\mathbf{z}_{j}+\mathbf{e}_{j}\right)</script><h3 id="Topic-Guidance"><a href="#Topic-Guidance" class="headerlink" title="Topic Guidance"></a>Topic Guidance</h3><p>在主题判别模块，本文将每个句子看做一个文档，并利用LDA模型分析其中隐含的主题列表K，并为每一个句子打上最可能的主题标签。目的是是document-level decoder更能与主题相关。在这里，作者设计了一个辅助任务用document-level decoder得到的隐层表示来预测主题$k_{t}$，$P\left(k_{t} | s_{1 : t-1}\right)=\operatorname{softmax}\left(W_{k}\left(\mathbf{s}_{t}\right)\right)$ （这里不太清楚为什么不是$P(k_{t} | s_{t})$ ）。</p>
+<p><img src="http://image.sherlocknlp.com/image/20190914/oIh3aVW4wevv.png" alt="mark"></p>
+<p><strong>符号说明</strong></p>
+<p>$\alpha_{t j}^{s}$：sentence-level decoder中attention的权重</p>
+<p>$a_{t i j}^{l}$：document-level decoder中attention的权重</p>
+<p>${c}_{t}^{s}$：document-level decoder中得到的attention表示</p>
+<p>$e_i$：句内位置向量</p>
+<p>$e_t$：句子位置向量</p>
+<p>$\mathbf{o}_{t i}^{l}$：卷积神经网络第l层对第t句摘要的第i个词的解码输出</p>
+<p>$y_{t i}$：输出摘要中第t句的第i个词</p>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p>本文在自己构造的数据集WIKICATSUM上进行实验，具体参数如下：</p>
+<p><img src="http://image.sherlocknlp.com/image/20190914/K8TATIwLLkCa.png" alt="mark"></p>
+<p>实验中将模型与谷歌2018年的工作进行对比。结果如下（TF-S2S是谷歌的工作）</p>
+<p><img src="http://image.sherlocknlp.com/image/20190914/l7QbioMG5vGN.png" alt="mark"></p>
+<p><img src="http://image.sherlocknlp.com/image/20190914/j5YhR5mq7AGB.png" alt="mark"></p>
+<h2 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h2><p>（个人观点）本文最大贡献是分层解码部分，document-level decoder部分利用辅助任务捕捉到topic信息。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>Liu P J, Saleh M, Pot E, et al. Generating wikipedia by summarizing long sequences[J]. ICLR 2018.</p>
+<p>Jonas Gehring, Michael Auli, David Grangier, Denis Yarats, and Yann N Dauphin. 2017. Convolutional Sequence to Sequence Learning ICML 2017</p>
+<p>Thang Luong, Hieu Pham, and Christopher D. Manning. 2015. Effective approaches to attention-based neural machine translation. EMNLP 2015</p>
+<p><a href="https://www.jiqizhixin.com/articles/2019-08-19-5" target="_blank" rel="noopener">ACL 2019 | 利用主题模板进行维基百科摘要生成</a></p>
 
       
     </div>
@@ -576,7 +579,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://www.sherlocknlp.com/小冰架构学习/" title="小冰架构学习">http://www.sherlocknlp.com/小冰架构学习/</a>
+    <a href="http://www.sherlocknlp.com/《基于主题模板和结构化卷积解码器生成摘要》阅读笔记/" title="《基于主题模板和结构化卷积解码器生成摘要》阅读笔记">http://www.sherlocknlp.com/《基于主题模板和结构化卷积解码器生成摘要》阅读笔记/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -587,12 +590,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/dialogue-system/" rel="tag"># dialogue system</a>
-          
-        </div>
-      
 
       
       
@@ -602,8 +599,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/《使用执行指导文本到SQL解码生成》阅读笔记/" rel="next" title="《使用执行指导文本到SQL解码生成》阅读笔记">
-                <i class="fa fa-chevron-left"></i> 《使用执行指导文本到SQL解码生成》阅读笔记
+              <a href="/NLP文本表示预训练技术/" rel="next" title="NLP文本表示预训练技术">
+                <i class="fa fa-chevron-left"></i> NLP文本表示预训练技术
               </a>
             
           </div>
@@ -611,10 +608,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/中文NLSQL挑战赛/" rel="prev" title="天池——中文NLSQL挑战赛">
-                天池——中文NLSQL挑战赛 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -799,7 +792,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#设计思想"><span class="nav-number">1.</span> <span class="nav-text">设计思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统架构"><span class="nav-number">2.</span> <span class="nav-text">系统架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户体验层"><span class="nav-number">2.1.</span> <span class="nav-text">用户体验层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对话引擎层"><span class="nav-number">2.2.</span> <span class="nav-text">对话引擎层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对话管理"><span class="nav-number">2.2.1.</span> <span class="nav-text">对话管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#共情计算（Empathetic-Computing）"><span class="nav-number">2.2.2.</span> <span class="nav-text">共情计算（Empathetic Computing）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#核心聊天（Core-chat）"><span class="nav-number">2.2.3.</span> <span class="nav-text">核心聊天（Core chat）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据层"><span class="nav-number">2.3.</span> <span class="nav-text">数据层</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model"><span class="nav-number">2.</span> <span class="nav-text">Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CNN-Encoder"><span class="nav-number">2.1.</span> <span class="nav-text">CNN Encoder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hierarchical-Convolutional-Decoder"><span class="nav-number">2.2.</span> <span class="nav-text">Hierarchical Convolutional Decoder</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Document-level-Decoder"><span class="nav-number">2.2.1.</span> <span class="nav-text">Document-level Decoder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sentence-level-Decoder"><span class="nav-number">2.2.2.</span> <span class="nav-text">Sentence-level Decoder</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Topic-Guidance"><span class="nav-number">2.3.</span> <span class="nav-text">Topic Guidance</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Experiments"><span class="nav-number">3.</span> <span class="nav-text">Experiments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusions"><span class="nav-number">4.</span> <span class="nav-text">Conclusions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
