@@ -118,7 +118,7 @@
 <meta property="og:image" content="http://image.sherlocknlp.com/image/20191119/hAS6mGaeNkPX.png">
 <meta property="og:image" content="http://image.sherlocknlp.com/image/20191119/pqmiGLPmea76.png">
 <meta property="og:image" content="https://pic1.zhimg.com/v2-f22e216a969ff93bec51fa05d610c35c_b.gif">
-<meta property="og:updated_time" content="2019-11-19T05:13:00.103Z">
+<meta property="og:updated_time" content="2019-11-20T00:24:56.218Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NLP文本表示预训练技术">
 <meta name="twitter:description" content="NLP里程碑    时间 事件     2001 Neural Language Model   2008 Multi-task learning   2013 Word Embedding / NN for NLP   2014 Sequence to Sequence   2015 Attention   2016 Memory Network   2018 Pretrained Langua">
@@ -430,7 +430,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-11-19 13:13:00" itemprop="dateModified" datetime="2019-11-19T13:13:00+08:00">2019-11-19</time>
+                <time title="修改时间：2019-11-20 08:24:56" itemprop="dateModified" datetime="2019-11-20T08:24:56+08:00">2019-11-20</time>
               
             
           </span>
@@ -626,7 +626,7 @@ P(X) = P(x_0, x_1,...,x_T)=P(x_0)P(x_1|x_0)P(x_2|x_1)...P(x_T|x_{T-1})=P(x_0)\pr
 <p><a href="https://transformer.huggingface.co/" target="_blank" rel="noopener">https://transformer.huggingface.co/</a></p>
 <p><img src="http://image.sherlocknlp.com/image/20191119/PWGBXlBfOP0f.png" alt="mark"> </p>
 <h2 id="BERT"><a href="#BERT" class="headerlink" title="BERT"></a>BERT</h2><p> <img src="http://image.sherlocknlp.com/image/20191119/P2oMP9qOh7g4.png" alt="mark"> </p>
-<p>BERT是一种预训练语言表示的方法，这意味着我们在大型文本语料库（如维基百科）上训练通用的“语言理解”模型，然后将该模型用于我们关心的下游NLP任务（如问答）。 BERT优于以前的方法，因为它是第一个用于预训练NLP的无监督，深度双向系统。</p>
+<p><strong>BERT</strong>是一种基于<strong>transformer架构</strong>的预训练语言表示方法，这意味着我们在大型文本语料库（如维基百科）上训练通用的“语言理解”模型，然后将该模型用于我们关心的下游NLP任务（如问答）。 BERT优于以前的方法，因为它是第一个用于预训练NLP的无监督，深度双向系统。</p>
 <p><img src="http://image.sherlocknlp.com/image/20191119/4Pl1eTTKNDDS.png" alt="mark"></p>
 <p>BERT联合<code>遮蔽语言模型（masked language model, MLM）</code>和<code>下一句预测（next sentence prediction）</code>两个任务联合预训练文本的表征。</p>
 <h3 id="任务1：Masked-LM"><a href="#任务1：Masked-LM" class="headerlink" title="任务1：Masked LM"></a>任务1：Masked LM</h3><p>为了训练深度双向表征，BERT模型采取了一个直接的方法，随机遮蔽输入token的某些部分，然后预测被遮住的token。该步骤在文献中通常被称为Cloze任务（Taylor, 1953）。在这种情况下，对应遮蔽的token的最终隐藏向量会输入到softmax函数中，并如标准的LM那样预测所有词汇的概率。在实验中，随机遮住每个序列15%的token。与去噪自编码器（Vincent et al., 2008）相反，我们仅预测遮蔽单词而非重建整个输入。</p>
@@ -669,6 +669,7 @@ P(X) = P(x_0, x_1,...,x_T)=P(x_0)P(x_1|x_0)P(x_2|x_1)...P(x_T|x_{T-1})=P(x_0)\pr
 <p><a href="https://blog.csdn.net/ccbrid/article/details/88732857" target="_blank" rel="noopener">Pytorch版本的BERT使用学习笔记</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/50582974" target="_blank" rel="noopener">两行代码代码玩转Google BERT局向量词向量</a></p>
 <p><a href="https://www.jiqizhixin.com/articles/2019-06-10-7" target="_blank" rel="noopener">Bert时代的创新：Bert在NLP各领域的应用进展</a></p>
+<p><a href="https://www.jiqizhixin.com/articles/2019-06-17-16" target="_blank" rel="noopener">BERT时代与后时代的NLP（一）</a></p>
 <p><a href="https://www.jiqizhixin.com/articles/2019-06-27-18" target="_blank" rel="noopener">BERT时代与后时代的NLP（二）</a></p>
 <p><a href="https://www.jiqizhixin.com/articles/2019-06-29-3" target="_blank" rel="noopener">拆解XLNet模型设计，回顾语言表征学习的思想演进</a></p>
 
@@ -808,7 +809,7 @@ P(X) = P(x_0, x_1,...,x_T)=P(x_0)P(x_1|x_0)P(x_2|x_1)...P(x_T|x_{T-1})=P(x_0)\pr
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -852,7 +853,9 @@ P(X) = P(x_0, x_1,...,x_T)=P(x_0)P(x_1|x_0)P(x_2|x_1)...P(x_T|x_{T-1})=P(x_0)\pr
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -957,7 +960,7 @@ P(X) = P(x_0, x_1,...,x_T)=P(x_0)P(x_1|x_0)P(x_2|x_1)...P(x_T|x_{T-1})=P(x_0)\pr
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">32k</span>
+    <span title="站点总字数">38k</span>
   
 
   
@@ -968,7 +971,7 @@ P(X) = P(x_0, x_1,...,x_T)=P(x_0)P(x_1|x_0)P(x_2|x_1)...P(x_T|x_{T-1})=P(x_0)\pr
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">30 分钟</span>
+    <span title="站点阅读时长">35 分钟</span>
   
 </div>
 
