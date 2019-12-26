@@ -73,7 +73,7 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[基于 Hexo + Github Pages 搭建个人博客]]></title>
+    <title><![CDATA[基于 Hexo + Github Pages 搭建个人主页]]></title>
     <url>%2F%E5%9F%BA%E4%BA%8E%20Hexo%20%2B%20Github%20Pages%20%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%2F</url>
     <content type="text"><![CDATA[准备知识什么是Github Pages?什么是Hexo？Hexo是一个快速、简洁且高效的博客框架。Hexo使用Markdown解析文章，在几秒内，即可使用靓丽的主题生成静态网页。 搭建步骤环境 Ubuntu 16.04 git Node.js：建议使用nvm进行安装 123wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bashnvm install stable 安装Hexo官方安装文档 1$ npm install hexo-cli -g 在本地第一次部署1234$ hexo init blog$ cd blog$ hexo generate$ hexo server 现在在浏览器中输入localhost:4000 public: 执行hexo generate命令，输出的静态网页内容目录 scaffolds: layout模板文件目录 scripts： 扩展脚本目录，这里可以自定义一些javascript脚本 source： 文章源码目录，该目录下的markdown和html文件均会被hexo处理 drafts: 保存草稿文章 posts: _config.yml: 网站的全局配置文件 package.json: hexo的版本信息 使用Next主题在Hexo中有两份主要的配置文件，其名称都是_config.yml。其中一份位于站点根目录下，主要包含Hexo本身的配置；另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。为了区分，我们将前者称为站点配置文件，后者称为主题配置文件。 下载Next主题1234$ git clone https://github.com/iissnan/hexo-theme-next themes/next``` 修改主目录下的_config.yml配置文件 theme: next12在本地测试网站 $ hexo clean$ hexo generate$ hexo server``` 参考Github Pages+Hexo搭建个人博客]]></content>
       <tags>
