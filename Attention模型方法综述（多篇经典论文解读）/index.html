@@ -113,7 +113,7 @@
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/A7564168106A4456B7FA574EAD166CC6?method=download&shareKey=2bcff76457eaecdc785cd830972eba21">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/75B2600C41E24392A547E86F1EB14BCE?method=download&shareKey=5824b4c2e293e04068dd3e8121bfa0c0">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/015E714496024CBA90313426A933F7A7?method=download&shareKey=fa4dcdc4650aa588b157f4aab5e518c6">
-<meta property="og:updated_time" content="2019-09-15T13:24:45.324Z">
+<meta property="og:updated_time" content="2020-02-09T09:48:52.413Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Attention模型方法综述">
 <meta name="twitter:description" content="Attention背景介绍 先简单谈一谈attention模型的引入。以基于seq2seq模型的机器翻译为例，如果decoder只用encoder最后一个时刻输出的hidden state,可能会有两个问题。  encoder最后一个hidden state, 与句子末端词汇的关联较大，难以保留句子起始部分的信息； encoder按顺序依次接受输入，可以认为encoder产出的hidden sta">
@@ -408,7 +408,7 @@
                 
               
 
-              <time title="创建时间：2019-05-30 09:54:37" itemprop="dateCreated datePublished" datetime="2019-05-30T09:54:37+08:00">2019-05-30</time>
+              <time title="创建时间：2019-12-26 23:05:46" itemprop="dateCreated datePublished" datetime="2019-12-26T23:05:46+08:00">2019-12-26</time>
             
 
             
@@ -425,7 +425,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-09-15 21:24:45" itemprop="dateModified" datetime="2019-09-15T21:24:45+08:00">2019-09-15</time>
+                <time title="修改时间：2020-02-09 17:48:52" itemprop="dateModified" datetime="2020-02-09T17:48:52+08:00">2020-02-09</time>
               
             
           </span>
@@ -478,7 +478,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">8.4k</span>
+                <span title="本文字数">9k</span>
               
 
               
@@ -515,13 +515,18 @@
         <h1 id="Attention背景介绍"><a href="#Attention背景介绍" class="headerlink" title="Attention背景介绍"></a>Attention背景介绍</h1><p><img src="https://note.youdao.com/yws/api/personal/file/A55104E9C80C40F1B77C0D20B8D97A18?method=download&amp;shareKey=83583c4427a6e2c50acad2d37b9f8098" alt="cat"></p>
 <p>先简单谈一谈attention模型的引入。以基于seq2seq模型的机器翻译为例，如果decoder只用encoder最后一个时刻输出的hidden state,可能会有<strong>两个问题</strong>。</p>
 <ol>
-<li>encoder最后一个hidden state, 与句子末端词汇的关联较大，难以保留句子起始部分的信息；</li>
+<li>encoder最后一个hidden state, 与<strong>句子末端词汇</strong>的关联较大，难以保留句子起始部分的信息；</li>
 <li>encoder按顺序依次接受输入，可以认为encoder产出的hidden state包含词序信息。所以一定程度上decoder的翻译也会按照原始句子的书序依次进行，但实际中翻译却未必如此。</li>
 </ol>
 <p>为了一定程度上解决以上的问题，14年的一篇文章Sequence to Sequence Learning with Neural Network提出了一个有意思的trick，即在模型训练的过程中将原始句子进行反转，取得了一定的效果。</p>
-<p>在计算Attention时主要分三步，<strong>第一步</strong>是将query和每个key进行相似度计算得到权重，常用的相似度函数有<strong>点积、拼接和感知机等</strong>；<strong>第二步</strong>使用softmax函数对这些权重进行归一化；第三步将权重和相应的键值进行加权求和得到最后的attention。</p>
+<h3 id="Attention的计算"><a href="#Attention的计算" class="headerlink" title="Attention的计算"></a>Attention的计算</h3><p>在计算Attention时主要分三步：</p>
+<ol>
+<li>query和每个key进行相似度计算得到权重，常用的相似度函数有<strong>点积、拼接和感知机等</strong>；</li>
+<li>使用<strong>softmax函数</strong>对这些权重进行归一化；</li>
+<li>将权重和相应的键值进行加权求和得到最后的attention。</li>
+</ol>
 <script type="math/tex; mode=display">
-f(Q, K_j) = \begin{cases} Q^T K_j, & \text {dot} \\ Q^T W_a K_j, & \text {general} \\ W_a[Q,K_j], & \text concat \\v_a^Ttanh(W_a[h_t;\tilde{h}_s]) & \text {perceptron} \end{cases}</script><script type="math/tex; mode=display">
+f(Q, K_j) = \begin{cases} Q^T K_j, & \text {dot} \\ Q^T W_a K_j, & \text {general} \\ W_a[Q,K_j], & \text concat \\v_a^Ttanh(W_a[Q;K_j]) & \text {perceptron} \end{cases}</script><script type="math/tex; mode=display">
 \alpha_j = softmax(f(Q,K_j)) = \frac {exp(f(Q,K_j))}{\sum_j exp(f(Q, K_j))}</script><script type="math/tex; mode=display">
 Attention(Q,K,V) = \sum_j \alpha_j V_j</script><h1 id="相关论文"><a href="#相关论文" class="headerlink" title="相关论文"></a>相关论文</h1><p>Attention机制的本质来自于人类视觉注意力机制。</p>
 <h2 id="Show-Attend-and-Tell（Soft-Hard-Attention）"><a href="#Show-Attend-and-Tell（Soft-Hard-Attention）" class="headerlink" title="Show, Attend and Tell（Soft/Hard Attention）"></a>Show, Attend and Tell（Soft/Hard Attention）</h2><p>■ 论文 | <a href>Effective Approaches to Attention-based Neural Machine Translation</a></p>
@@ -538,31 +543,35 @@ Attention(Q,K,V) = \sum_j \alpha_j V_j</script><h1 id="相关论文"><a href="#�
 <script type="math/tex; mode=display">
 \tilde{h}_t = tanh(W_c[c_t;h_t])</script><p>最后利用softmax产出该时刻的输出：</p>
 <script type="math/tex; mode=display">
-p(y_t|y_{<t}, x) = softmax(W_s\tilde{h}_t)</script><h3 id="global-attention"><a href="#global-attention" class="headerlink" title="global attention"></a>global attention</h3><p><img src="https://note.youdao.com/yws/api/personal/file/462AD3AE189E4F35BA83B4B83A60AEF7?method=download&shareKey=fe16c34653a1c582839dd73d371b60a9" width="800" hegiht="313" align="right"></p>
+p(y_t|y_{<t}, x) = softmax(W_s\tilde{h}_t)</script><h3 id="global-attention"><a href="#global-attention" class="headerlink" title="global attention"></a>global attention</h3><p><img src="https://note.youdao.com/yws/api/personal/file/462AD3AE189E4F35BA83B4B83A60AEF7?method=download&shareKey=fe16c34653a1c582839dd73d371b60a9" style="zoom:60%;" align="center"></p>
 <p>global attention在计算context vector($c_t$)的时候会考虑encoder所产生的全部hidden state。记decoder时刻t的target hidden为$h_t$，encoder的全部hidden state为$\tilde{h}_s, s =1,2,…,n$。对其中任意$\tilde{h}_s$,其权重$\alpha_t(s)$为：</p>
 <script type="math/tex; mode=display">
 \alpha_t(s) = align(h_t, \tilde{h}_s) 
 = \frac {exp(score(h_t,\tilde{h}_s))}{\sum_{s^`} exp(score(h_t, \tilde{h}_{s^`}))}</script><p>其中的$score(h_t,\tilde{h}_s)$的计算方法如下</p>
 <script type="math/tex; mode=display">
-score(h_t, \tilde{h}_s) = \begin{cases} h_t^T \tilde{h}_s, & \text {dot} \\ h_t^TW_a\tilde{h}_s, & \text {general} \\ v_a^Ttanh(W_a[h_t;\tilde{h}_s]) & \text {concat} \end{cases}</script><h3 id="local-attention"><a href="#local-attention" class="headerlink" title="local attention"></a>local attention</h3><p><img src="https://note.youdao.com/yws/api/personal/file/8CAAE42558054608BF224D46B141F206?method=download&shareKey=2a379ba8c7cc1cfefd8babc86455c4db" width="800" hegiht="313" align="right"></p>
+score(h_t, \tilde{h}_s) = \begin{cases} h_t^T \tilde{h}_s, & \text {dot} \\ h_t^TW_a\tilde{h}_s, & \text {general} \\ v_a^Ttanh(W_a[h_t;\tilde{h}_s]) & \text {concat} \end{cases}</script><h3 id="local-attention"><a href="#local-attention" class="headerlink" title="local attention"></a>local attention</h3><p><img src="https://note.youdao.com/yws/api/personal/file/8CAAE42558054608BF224D46B141F206?method=download&shareKey=2a379ba8c7cc1cfefd8babc86455c4db" style="zoom:60%;" align="center"></p>
 <p>global attention可能的缺点在于每次都要扫描全部的source hidden state，计算开销较大，对于长句翻译不利。为了提升效率，提出的local attention每次只focus一小部分的source position。</p>
 <h2 id="NMT-by-Joint-Learning"><a href="#NMT-by-Joint-Learning" class="headerlink" title="NMT by Joint Learning"></a>NMT by Joint Learning</h2><p>■ 论文 | <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Neural Machine Translation by Jointly Learning to Align and Translate</a></p>
 <p>■ 源码 | <a href="https://github.com/spro/torch-seq2seq-attention" target="_blank" rel="noopener">https://github.com/spro/torch-seq2seq-attention</a></p>
 <h2 id="Attention-is-All-You-Need"><a href="#Attention-is-All-You-Need" class="headerlink" title="Attention is All You Need"></a>Attention is All You Need</h2><p>■ 论文 | <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Attention is All You Need</a></p>
 <p>■ 源码 | <a href="https://github.com/Kyubyong/transformer" target="_blank" rel="noopener">https://github.com/Kyubyong/transformer</a></p>
-<p>本文提出了一种新型的网络结构，并起名叫做Transformer，里面所包含的注意力机制称为self-attention。</p>
+<p>本文提出了一种新型的网络结构，并起名叫做Transformer，里面所包含的注意力机制称为self-attention。可以认为它与RNN、CNN一样，都是序列编码层。</p>
 <p><img src="https://note.youdao.com/yws/api/personal/file/F5FFA65439514F5E8B3DEE2FEA8103A7?method=download&amp;shareKey=8a10d97f7027f0cbb0d98bf6e5c713b2" alt="transformer"></p>
 <p><img src="https://note.youdao.com/yws/api/personal/file/A7564168106A4456B7FA574EAD166CC6?method=download&amp;shareKey=2bcff76457eaecdc785cd830972eba21" alt></p>
 <h3 id="Scaled-Dot-Product-Attention"><a href="#Scaled-Dot-Product-Attention" class="headerlink" title="Scaled Dot-Product Attention"></a>Scaled Dot-Product Attention</h3><p><img src="https://note.youdao.com/yws/api/personal/file/75B2600C41E24392A547E86F1EB14BCE?method=download&amp;shareKey=5824b4c2e293e04068dd3e8121bfa0c0" alt></p>
 <script type="math/tex; mode=display">
-Attention(Q,K,V) = softmax\left(\frac {QK^T} {\sqrt{d_k}}\right)V
+Attention(Q,K,V) = softmax\left(\frac {QK^T} {\sqrt{d_k}}\right)V \\
 
-Q \in R^{n\times d_k}, K\in R^{m\times d_k}, V\in R^{m\times d_v}</script><p>如果忽略softmax函数，上述公式可以看作三个维数为$n\times d_k,d_k \times m, m\times d_v$的矩阵相乘，最后得到一个$n\times d_v$的矩阵。因此，该Attention层就可以看作，将维数为<code>$n\times d_k$</code>的序列Q编码成一个维数为$n\times d_v$的序列。</p>
+Q \in R^{n\times d_k}, K\in R^{m\times d_k}, V\in R^{m\times d_v}</script><p>如果忽略softmax函数，上述公式可以看作三个维数为$n\times d_k,d_k \times m, m\times d_v$的矩阵相乘，最后得到一个$n\times d_v$的矩阵。因此，该Attention层就可以看作，将维数为$n\times d_k$的序列Q编码成一个维数为$n\times d_v$的序列。</p>
 <h3 id="Multi-Head-Attention"><a href="#Multi-Head-Attention" class="headerlink" title="Multi-Head Attention"></a>Multi-Head Attention</h3><p><img src="https://note.youdao.com/yws/api/personal/file/015E714496024CBA90313426A933F7A7?method=download&amp;shareKey=fa4dcdc4650aa588b157f4aab5e518c6" alt></p>
 <script type="math/tex; mode=display">
 head_i = Attention(QW_i^Q, KW_i^Q, VW_i^V)</script><script type="math/tex; mode=display">
 MultiHead(Q,K,V) = Concat(head_1, ..., head_h)</script><p>本文主要的贡献之一是<strong>它表明了内部注意力机制在机器翻译（甚至是一般的Seq2Seq任务）的序列编码上很重要</strong>。Multi-Head Self-Attention不是仅仅计算一次注意力，而是多次并行地计算Scaled dot-product attention，所有的注意力结果级联后经线性变换到预期的维度。</p>
-<h3 id="Position-Embedding"><a href="#Position-Embedding" class="headerlink" title="Position Embedding"></a>Position Embedding</h3><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&amp;mid=2247486960&amp;idx=1&amp;sn=1b4b9d7ec7a9f40fa8a9df6b6f53bbfb&amp;chksm=96e9d270a19e5b668875392da1d1aaa28ffd0af17d44f7ee81c2754c78cc35edf2e35be2c6a1&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">一文读懂「Attention is All You Need」- 苏剑林</a></p>
+<h3 id="Position-Embedding"><a href="#Position-Embedding" class="headerlink" title="Position Embedding"></a>Position Embedding</h3><p>到目前为止，模型并不能补助序列之间的顺序关系。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&amp;mid=2247486960&amp;idx=1&amp;sn=1b4b9d7ec7a9f40fa8a9df6b6f53bbfb&amp;chksm=96e9d270a19e5b668875392da1d1aaa28ffd0af17d44f7ee81c2754c78cc35edf2e35be2c6a1&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">一文读懂「Attention is All You Need」- 苏剑林</a></p>
+<p><a href="https://mp.weixin.qq.com/s/jdQVz4SC8UGTynlTft2CIA" target="_blank" rel="noopener">从语言模型到Seq2Seq：Transformer如戏，全靠Mask</a></p>
+<p><a href="https://mp.weixin.qq.com/s/pKxqPB9qIGmE_PslPa6EyA" target="_blank" rel="noopener">长文详解Attention的前世今生</a></p>
+<p><a href="https://mp.weixin.qq.com/s/K3XnswN0en2TWIk0IHoIUw" target="_blank" rel="noopener">绝对干货！NLP预训练模型：从transformer到albert</a></p>
 <p><a href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/" target="_blank" rel="noopener">Visualizing A Neural Machine Translation Model (Mechanics of Seq2seq Models With Attention)</a></p>
 <p><a href="http://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener">The Illustrated Transformer</a></p>
 
@@ -619,8 +628,8 @@ MultiHead(Q,K,V) = Concat(head_1, ..., head_h)</script><p>本文主要的贡献�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/知识驱动对话/" rel="next" title="知识驱动的对话生成">
-                <i class="fa fa-chevron-left"></i> 知识驱动的对话生成
+              <a href="/基于 Hexo + Github Pages 搭建个人博客/" rel="next" title="基于 Hexo + Github Pages 搭建个人主页">
+                <i class="fa fa-chevron-left"></i> 基于 Hexo + Github Pages 搭建个人主页
               </a>
             
           </div>
@@ -629,8 +638,8 @@ MultiHead(Q,K,V) = Concat(head_1, ..., head_h)</script><p>本文主要的贡献�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/《通过对响应原型编辑的回复生成》阅读笔记/" rel="prev" title="《通过对响应原型编辑的回复生成》阅读笔记">
-                《通过对响应原型编辑的回复生成》阅读笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/中文NLSQL挑战赛/" rel="prev" title="天池——中文NLSQL挑战赛">
+                天池——中文NLSQL挑战赛 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -818,7 +827,7 @@ MultiHead(Q,K,V) = Concat(head_1, ..., head_h)</script><p>本文主要的贡献�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Attention背景介绍"><span class="nav-number">1.</span> <span class="nav-text">Attention背景介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关论文"><span class="nav-number">2.</span> <span class="nav-text">相关论文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Show-Attend-and-Tell（Soft-Hard-Attention）"><span class="nav-number">2.1.</span> <span class="nav-text">Show, Attend and Tell（Soft/Hard Attention）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Attention-based-NMT"><span class="nav-number">2.2.</span> <span class="nav-text">Attention-based NMT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#global-attention"><span class="nav-number">2.2.1.</span> <span class="nav-text">global attention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#local-attention"><span class="nav-number">2.2.2.</span> <span class="nav-text">local attention</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NMT-by-Joint-Learning"><span class="nav-number">2.3.</span> <span class="nav-text">NMT by Joint Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Attention-is-All-You-Need"><span class="nav-number">2.4.</span> <span class="nav-text">Attention is All You Need</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scaled-Dot-Product-Attention"><span class="nav-number">2.4.1.</span> <span class="nav-text">Scaled Dot-Product Attention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-Head-Attention"><span class="nav-number">2.4.2.</span> <span class="nav-text">Multi-Head Attention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Position-Embedding"><span class="nav-number">2.4.3.</span> <span class="nav-text">Position Embedding</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Attention背景介绍"><span class="nav-number">1.</span> <span class="nav-text">Attention背景介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Attention的计算"><span class="nav-number">1.0.1.</span> <span class="nav-text">Attention的计算</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#相关论文"><span class="nav-number">2.</span> <span class="nav-text">相关论文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Show-Attend-and-Tell（Soft-Hard-Attention）"><span class="nav-number">2.1.</span> <span class="nav-text">Show, Attend and Tell（Soft/Hard Attention）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Attention-based-NMT"><span class="nav-number">2.2.</span> <span class="nav-text">Attention-based NMT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#global-attention"><span class="nav-number">2.2.1.</span> <span class="nav-text">global attention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#local-attention"><span class="nav-number">2.2.2.</span> <span class="nav-text">local attention</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NMT-by-Joint-Learning"><span class="nav-number">2.3.</span> <span class="nav-text">NMT by Joint Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Attention-is-All-You-Need"><span class="nav-number">2.4.</span> <span class="nav-text">Attention is All You Need</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scaled-Dot-Product-Attention"><span class="nav-number">2.4.1.</span> <span class="nav-text">Scaled Dot-Product Attention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-Head-Attention"><span class="nav-number">2.4.2.</span> <span class="nav-text">Multi-Head Attention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Position-Embedding"><span class="nav-number">2.4.3.</span> <span class="nav-text">Position Embedding</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></div>
             
 
           </div>
@@ -839,7 +848,7 @@ MultiHead(Q,K,V) = Concat(head_1, ..., head_h)</script><p>本文主要的贡献�
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备19026824号 </a>&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备19026824号 </a>&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -853,7 +862,7 @@ MultiHead(Q,K,V) = Concat(head_1, ..., head_h)</script><p>本文主要的贡献�
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">38k</span>
+    <span title="站点总字数">40k</span>
   
 
   
@@ -864,7 +873,7 @@ MultiHead(Q,K,V) = Concat(head_1, ..., head_h)</script><p>本文主要的贡献�
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">35 分钟</span>
+    <span title="站点阅读时长">36 分钟</span>
   
 </div>
 
